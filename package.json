@@ -5,11 +5,13 @@
   "main": "index.js",
   "source": "src/index.html",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "alias": {
-    "process": "false"
-  },
+    "test": "echo \"Error: no test specified\" && exit 1"},
+    
+    "alias": {
+      "process": {
+        "global": "{}"
+      }
+    },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/AlissaCoto89/myFlix-client.git"
@@ -21,7 +23,7 @@
   },
   "homepage": "https://github.com/AlissaCoto89/myFlix-client#readme",
   "dependencies": {
-    "@parcel/transformer-sass": "^2.0.0-rc.0",
+    "@parcel/transformer-sass": "^2.7.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   }
