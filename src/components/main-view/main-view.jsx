@@ -1,34 +1,29 @@
 import React from 'react';
+import axios from 'axios';
+
 import { MovieCard } from '../movie-card/movie-card';
 import { MovieView } from '../movie-view/movie-view';
+
 export class MainView extends React.Component {
   constructor(){
     super();
     this.state = {
-      movies: [
-        { _id: "632b5e910d672a0abeeeb3e3", 
-        Title: "Bridesmaids", 
-        Director: "Paul Feig",
-        Description: "Competition between the maid of honor and a bridesmaid, over who is the bride's best friend, threatens to upend the life of an out-of-work pastry chef.", 
-        Genre: "Comedy",
-        ImagePath: "https://m.media-amazon.com/images/I/71NSaiNKO9L._AC_SL1333_.jpg"},
-
-        { _id: "632b58580d672a0abeeeb3e1", 
-        Title: "Iron Man", 
-        Director: "Jon Favreau",
-        Description: "After being held captive in an Afghan cave, billionaire engineer Tony Stark creates a unique weaponized suit of armor to fight evil.", 
-        Genre: "Superhero",
-        ImagePath: "https://www.previewsworld.com/SiteImage/MainImage/STL206028.jpg"},
-
-        { _id: "632b69dc0d672a0abeeeb3e6", 
-        Title: "Pretty Woman",  
-        Director: "Garry Marshall",
-        Description: "A man in a legal but hurtful business needs an escort for some social events and hires a beautiful prostitute he meets, only to fall in love.", 
-        Genre: "Romantic Comedy",
-        ImagePath: "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcTDTHnd0HSjj9GDi8-rOC6vXCvO7J4GqmuNbFjQ58NPrAh_l0p8"}
-      ],
+      movies: [],
       selectedMovie: null 
   };
+}
+
+componentDidMount(){
+  axios.get('https://my-flix-db-akc.herokuapp.com/movies')
+    .then(response => {
+      this.setState({
+        movies: response.data
+      });
+    })
+    .catch(error => {
+      console.log(error);
+    });
+
 }
 setSelectedMovie(newSelectedMovie) {
   this.setState({
@@ -37,14 +32,16 @@ setSelectedMovie(newSelectedMovie) {
 }
 render() {
   const { movies, selectedMovie } = this.state;
-  if (movies.length === 0) return <div className="main-view">The list is empty!</div>;
+
+  if (movies.length === 0) return <div className="main-view" />;
+
   return (
     <div className="main-view">
       {selectedMovie
         ? <MovieView movie={selectedMovie} onBackClick={newSelectedMovie => { this.setSelectedMovie(newSelectedMovie); }}/>
         : movies.map(movie => (
-          <MovieCard key={movie._id} movie={movie} onMovieClick={(movie) => { this.setSelectedMovie(movie) }}/>
-        ))
+          <MovieCard key={movie._id} movie={movie} onMovieClick={(newSelectedMovie) => { this.setSelectedMovie(newSelectedMovie) }}/>
+       ))
       }
     </div>
   );
