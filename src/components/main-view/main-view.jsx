@@ -1,49 +1,74 @@
-import React from 'react';
-import axios from 'axios';
+import React from "react";
+import axios from "axios";
+import PropTypes from "prop-types";
 
-import { MovieCard } from '../movie-card/movie-card';
-import { MovieView } from '../movie-view/movie-view';
+import { LoginView } from "../login-view/login-view";
+import { MovieCard } from "../movie-card/movie-card";
+import { MovieView } from "../movie-view/movie-view";
 
 export class MainView extends React.Component {
-  constructor(){
+  constructor() {
     super();
     this.state = {
       movies: [],
-      selectedMovie: null 
-  };
-}
+      selectedMovie: null,
+      user: null,
+    };
+  }
 
-componentDidMount(){
-  axios.get('https://my-flix-db-akc.herokuapp.com/movies')
-    .then(response => {
-      this.setState({
-        movies: response.data
+  componentDidMount() {
+    axios
+      .get("https://my-flix-db-akc.herokuapp.com/movies")
+      .then((response) => {
+        this.setState({
+          movies: response.data,
+        });
+      })
+      .catch((error) => {
+        console.log(error);
       });
-    })
-    .catch(error => {
-      console.log(error);
+  }
+  setSelectedMovie(movie) {
+    this.setState({
+      selectedMovie: movie,
     });
+  }
 
-}
-setSelectedMovie(newSelectedMovie) {
-  this.setState({
-    selectedMovie: newSelectedMovie
-  });
-}
-render() {
-  const { movies, selectedMovie } = this.state;
+  onLoggedIn(user) {
+    this.setState({
+      user,
+    });
+  }
 
-  if (movies.length === 0) return <div className="main-view" />;
+  render() {
+    const { movies, selectedMovie, user } = this.state;
 
-  return (
-    <div className="main-view">
-      {selectedMovie
-        ? <MovieView movie={selectedMovie} onBackClick={newSelectedMovie => { this.setSelectedMovie(newSelectedMovie); }}/>
-        : movies.map(movie => (
-          <MovieCard key={movie._id} movie={movie} onMovieClick={(newSelectedMovie) => { this.setSelectedMovie(newSelectedMovie) }}/>
-       ))
-      }
-    </div>
-  );
-}
+    if (!user)
+      return <LoginView onLoggedIn={(user) => this.onLoggedIn(user)} />;
+
+    if (movies.length === 0) return <div className="main-view" />;
+
+    return (
+      <div className="main-view">
+        {selectedMovie ? (
+          <MovieView
+            movie={selectedMovie}
+            onBackClick={(newSelectedMovie) => {
+              this.setSelectedMovie(newSelectedMovie);
+            }}
+          />
+        ) : (
+          movies.map((movie) => (
+            <MovieCard
+              key={movie._id}
+              movie={movie}
+              onMovieClick={(newSelectedMovie) => {
+                this.setSelectedMovie(newSelectedMovie);
+              }}
+            />
+          ))
+        )}
+      </div>
+    );
+  }
 }
