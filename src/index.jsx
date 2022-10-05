@@ -1,5 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import PropTypes from "prop-types";
+
 import { MainView } from "./components/main-view/main-view";
 
 // Import statement to indicate that you need to bundle `./index.scss`
