@@ -1,21 +1,38 @@
 import React from "react";
 import axios from "axios";
-import PropTypes from "prop-types";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 
-import { LoginView } from "../login-view/login-view";
 import { MovieCard } from "../movie-card/movie-card";
 import { MovieView } from "../movie-view/movie-view";
+import { LoginView } from "../login-view/login-view";
+import { RegistrationView } from "../registration-view/registration-view";
+
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
 
 export class MainView extends React.Component {
   constructor() {
     super();
     this.state = {
       movies: [],
-      selectedMovie: null,
       user: null,
     };
+  }
+
+  getMovies(token) {
+    axios
+      .get("https://my-flix-db-akc.herokuapp.com/movies", {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      .then((response) => {
+        // Assign the result to the state
+        this.setState({
+          movies: response.data,
+        });
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   }
 
   componentDidMount() {
@@ -44,63 +61,47 @@ export class MainView extends React.Component {
     this.getMovies(authData.token);
   }
 
-  getMovies(token) {
-    axios
-      .get("https://my-flix-db-akc.herokuapp.com/movies", {
-        headers: { Authorization: `Bearer ${token}` },
-      })
-      .then((response) => {
-        // Assign the result to the state
-        this.setState({
-          movies: response.data,
-        });
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-  }
-
-  onLoggedOut() {
-    localStorage.removeItem("token");
-    localStorage.removeItem("user");
-    this.setState({
-      user: null,
-    });
-  }
-
   render() {
-    const { movies, selectedMovie, user } = this.state;
+    const { movies, user } = this.state;
 
     if (!user)
-      return <LoginView onLoggedIn={(user) => this.onLoggedIn(user)} />;
-
+      return (
+        <Row>
+          <Col>
+            <LoginView onLoggedIn={(user) => this.onLoggedIn(user)} />
+          </Col>
+        </Row>
+      );
     if (movies.length === 0) return <div className="main-view" />;
 
     return (
-      <Row className="main-view justify-content-md-center">
-        {selectedMovie ? (
-          <Col md={8}>
-            <MovieView
-              movie={selectedMovie}
-              onBackClick={(newSelectedMovie) => {
-                this.setSelectedMovie(newSelectedMovie);
-              }}
-            />
-          </Col>
-        ) : (
-          movies.map((movie) => (
-            <Col md={3}>
-              <MovieCard
-                key={movie._id}
-                movie={movie}
-                onMovieClick={(newSelectedMovie) => {
-                  this.setSelectedMovie(newSelectedMovie);
-                }}
-              />
-            </Col>
-          ))
-        )}
-      </Row>
+      <Router>
+        <Row className="main-view justify-content-md-center">
+          <Route
+            exact
+            path="/"
+            render={() => {
+              return movies.map((m) => (
+                <Col md={3} key={m._id}>
+                  <MovieCard movie={m} />
+                </Col>
+              ));
+            }}
+          />
+          <Route
+            path="/movies/:movieId"
+            render={({ match }) => {
+              return (
+                <Col md={8}>
+                  <MovieView
+                    movie={movies.find((m) => m._id === match.params.movieId)}
+                  />
+                </Col>
+              );
+            }}
+          />
+        </Row>
+      </Router>
     );
   }
 }
