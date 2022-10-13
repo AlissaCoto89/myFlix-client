@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import PropTypes from "prop-types";
 import Container from "react-bootstrap/Container";
 
-import { MainView } from "./components/main-view/main-view";
+import MainView from "./components/main-view/main-view";
 
 // Import statement to indicate that you need to bundle `./index.scss`
 import "./index.scss";
