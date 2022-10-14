@@ -31,7 +31,7 @@ export class MovieView extends React.Component {
         </Link>
         <button
           onClick={() => {
-            onBackClick(null);
+            onBackClick();
           }}
         >
           Back

@@ -1,16 +1,16 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
 import axios from "axios";
+import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
 import { Container, Row, Col } from "react-bootstrap";
 import Navbar from "../../navbar/navbar";
-import LoginView from "../login-view/login-view";
-import MovieCard from "../movie-card/movie-card";
+import { LoginView } from "../login-view/login-view";
+import { MovieCard } from "../movie-card/movie-card";
 import { MovieView } from "../movie-view/movie-view";
 import { RegistrationView } from "../registration-view/registration-view";
 import { DirectorView } from "../../director-view/director-view";
 import { GenreView } from "../../genre-view/genre-view";
 
-export class MainView extends React.Component {
+class MainView extends React.Component {
   constructor() {
     super();
     this.state = {
@@ -18,6 +18,23 @@ export class MainView extends React.Component {
       user: null,
     };
   }
+
+  getMovies(token) {
+    axios
+      .get("https://my-flix-db-akc.herokuapp.com/movies", {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      .then((response) => {
+        // Assign the result to the state
+        this.setState({
+          movies: response.data,
+        });
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  }
+
   componentDidMount() {
     let accessToken = localStorage.getItem("token");
     if (accessToken !== null) {
@@ -36,22 +53,6 @@ export class MainView extends React.Component {
     localStorage.setItem("token", authData.token);
     localStorage.setItem("user", authData.user.Username);
     this.getMovies(authData.token);
-  }
-
-  getMovies(token) {
-    axios
-      .get("https://my-flix-db-akc.herokuapp.com/movies", {
-        headers: { Authorization: `Bearer ${token}` },
-      })
-      .then((response) => {
-        // Assign the result to the state
-        this.setState({
-          movies: response.data,
-        });
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
   }
 
   setSelectedMovie(movie) {
@@ -123,7 +124,7 @@ export class MainView extends React.Component {
               }}
             />
             <Route
-              path="/movie-director/:id"
+              path="/directors/:name"
               render={({ match, history }) => {
                 if (movies.length === 0) return <div className="main-view" />;
                 return (
@@ -172,7 +173,7 @@ export class MainView extends React.Component {
             />
 
             <Route
-              path="/movie-genre/:id"
+              path="/genres/:name"
               render={({ match, history }) => {
                 if (movies.length === 0) return <div className="main-view" />;
                 return (
@@ -194,3 +195,4 @@ export class MainView extends React.Component {
     );
   }
 }
+export default MainView;
