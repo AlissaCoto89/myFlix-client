@@ -1,5 +1,9 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { CardGroup, Button, Card } from "react-bootstrap";
+import { Link } from "react-router-dom";
+import "./movie-view.scss";
+
 export class MovieView extends React.Component {
   keypressCallback(event) {
     console.log(event.key);
@@ -40,3 +44,22 @@ export class MovieView extends React.Component {
     );
   }
 }
+MovieView.propTypes = {
+  movie: PropTypes.shape({
+    Title: PropTypes.string.isRequired,
+    Description: PropTypes.string.isRequired,
+    ImagePath: PropTypes.string.isRequired,
+    Genre: PropTypes.shape({
+      Name: PropTypes.string.isRequired,
+      Description: PropTypes.string.isRequired,
+    }).isRequired,
+    Actors: PropTypes.array.isRequired,
+    Director: PropTypes.shape({
+      Name: PropTypes.string.isRequired,
+      Bio: PropTypes.string.isRequired,
+      Birth: PropTypes.string.isRequired,
+      Death: PropTypes.string.isRequired,
+    }).isRequired,
+  }).isRequired,
+  onBackClick: PropTypes.func.isRequired,
+};
