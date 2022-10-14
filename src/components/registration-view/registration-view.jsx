@@ -18,31 +18,38 @@ export function RegistrationView(props) {
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
   const [birthday, setBirthday] = useState("");
-  const [usernameErr, setUsernameErr] = useState("");
-  const [passwordErr, setPasswordErr] = useState("");
-  const [emailErr, setEmailErr] = useState("");
-
+  const [values, setValues] = useState({
+    usernameErr: "",
+    passwordErr: "",
+    emailErr: "",
+  });
   const validate = () => {
     let isReq = true;
     if (!username) {
-      setUsernameErr("Username Required");
+      setValues({ ...values, usernameErr: "Username Required" });
       isReq = false;
     } else if (username.length < 5) {
-      setUsernameErr("Username must have at least 5 characters");
+      setValues({
+        ...values,
+        usernameErr: "Username must be atleast 5 characters long.",
+      });
       isReq = false;
     }
     if (!password) {
-      setPasswordErr("Password Required");
+      setValues({ ...values, passwordErr: "Password Required" });
       isReq = false;
     } else if (password.length < 4) {
-      setPasswordErr("Password must have at least 4 characters");
+      setValues({
+        ...values,
+        passwordErr: "Password must be atleast 4 characters long",
+      });
       isReq = false;
     }
     if (!email) {
-      setEmailErr("Email Required");
+      setValues({ ...values, emailErr: "Email Required" });
       isReq = false;
     } else if (email.indexOf("@") === -1) {
-      setEmailErr("Please enter valid email address");
+      setValues({ ...values, emailErr: "Email is invalid" });
       isReq = false;
     }
     return isReq;
@@ -67,7 +74,7 @@ export function RegistrationView(props) {
         })
         .catch((response) => {
           console.error(response);
-          alert("Unable to register user");
+          alert("Sorry, unable to register user");
         });
     }
   };
@@ -76,7 +83,7 @@ export function RegistrationView(props) {
     <Row className="mt-5">
       <Col md={12}>
         <Form>
-          <h1>Registration</h1>
+          <h3>Registration</h3>
           <p></p>
           <Form.Group controlId="formUsername" className="reg-form-inputs">
             <Form.Label>Username:</Form.Label>
@@ -84,7 +91,7 @@ export function RegistrationView(props) {
               type="text"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
-            />{" "}
+            />
             {values.usernameErr && <p>{values.usernameErr}</p>}
           </Form.Group>
 
@@ -94,7 +101,7 @@ export function RegistrationView(props) {
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-            />{" "}
+            />
             {values.passwordErr && <p>{values.passwordErr}</p>}
           </Form.Group>
 
@@ -104,7 +111,7 @@ export function RegistrationView(props) {
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-            />{" "}
+            />
             {values.emailErr && <p>{values.emailErr}</p>}
           </Form.Group>
 
@@ -114,15 +121,20 @@ export function RegistrationView(props) {
               type="date"
               name="birthday"
               onChange={(e) => setBirthday(e.target.value)}
-            ></Form.Control>
+            />
           </Form.Group>
 
-          <Button variant="primary" type="submit" onClick={handleSubmit}>
-            Submit
+          <Button
+            className="register"
+            variant="primary"
+            type="submit"
+            onClick={handleSubmit}
+          >
+            Register
           </Button>
           <p></p>
           <p>
-            Already registered <Link to={"/"}>Sign In</Link> here
+            Already registered? <Link to={"/"}>Sign In</Link> here
           </p>
         </Form>
       </Col>
