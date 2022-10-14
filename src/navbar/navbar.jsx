@@ -1,7 +1,8 @@
 import React from "react";
 import { Navbar, Container, Nav, Button } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
-export function Menubar({ user }) {
+export function Navbar({ user }) {
   const onLoggedOut = () => {
     localStorage.clear();
     window.open("/", "_self");
@@ -17,6 +18,7 @@ export function Menubar({ user }) {
       return false;
     }
   };
+
   return (
     <Navbar
       className="main-nav"
@@ -26,25 +28,32 @@ export function Menubar({ user }) {
       variant="dark"
     >
       <Container>
-        <Navbar.Brand as={Link} to="/">
+        <Navbar.Brand className="navbar-logo" as={Link} to="/">
           MyFlix
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="ml-auto">
-            {isAuth() && <Nav.Link href={"/users/${user}"}>{user}</Nav.Link>}
             {isAuth() && (
-              <Button
-                variant="link"
-                onClick={() => {
-                  this.onLoggedOut();
-                }}
-              >
-                Logout
-              </Button>
+              <Nav.Link as={Link} to={`/users/${user}`}>
+                {user}
+              </Nav.Link>
             )}
-            {!isAuth() && <Nav.Link href="/">Sign-In</Nav.Link>}
-            {isAuth() && <Nav.Link href="/register">Sign-Up</Nav.Link>}
+            {isAuth() && (
+              <Nav.Link as={Link} to="/" onClick={onLoggedOut}>
+                Logout
+              </Nav.Link>
+            )}
+            {!isAuth() && (
+              <Nav.Link as={Link} to="/">
+                Login
+              </Nav.Link>
+            )}
+            {!isAuth() && (
+              <Nav.Link as={Link} to="/register">
+                Sign Up
+              </Nav.Link>
+            )}
           </Nav>
         </Navbar.Collapse>
       </Container>
