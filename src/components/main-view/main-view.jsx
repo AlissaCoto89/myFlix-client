@@ -1,5 +1,6 @@
 import React from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
 import { Container, Row, Col } from "react-bootstrap";
 import { Navbar } from "../../navbar/navbar";
@@ -9,6 +10,7 @@ import { MovieView } from "../movie-view/movie-view";
 import { RegistrationView } from "../registration-view/registration-view";
 import { DirectorView } from "../../director-view/director-view";
 import { GenreView } from "../../genre-view/genre-view";
+import { ProfileView } from "../../profile-view/profile-view";
 
 class MainView extends React.Component {
   constructor() {
@@ -17,22 +19,6 @@ class MainView extends React.Component {
       movies: [],
       user: null,
     };
-  }
-
-  getMovies(token) {
-    axios
-      .get("https://my-flix-db-akc.herokuapp.com/movies", {
-        headers: { Authorization: `Bearer ${token}` },
-      })
-      .then((response) => {
-        // Assign the result to the state
-        this.setState({
-          movies: response.data,
-        });
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
   }
 
   componentDidMount() {
@@ -44,6 +30,19 @@ class MainView extends React.Component {
       this.getMovies(accessToken);
     }
   }
+
+  setSelectedMovie(movie) {
+    this.setState({
+      selectedMovie: movie,
+    });
+  }
+
+  setIsRegistering(status) {
+    this.setState({
+      isRegistering: status,
+    });
+  }
+
   onLoggedIn(authData) {
     console.log(authData);
     this.setState({
@@ -55,10 +54,19 @@ class MainView extends React.Component {
     this.getMovies(authData.token);
   }
 
-  setSelectedMovie(movie) {
-    this.setState({
-      selectedMovie: movie,
-    });
+  getMovies(token) {
+    axios
+      .get("https://my-flix-db-akc.herokuapp.com/movies", {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      .then((response) => {
+        this.setState({
+          movies: response.data,
+        });
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   }
 
   onLoggedOut() {
@@ -98,7 +106,7 @@ class MainView extends React.Component {
             />
             <Route
               path="/register"
-              render={() => {
+              render={({ history }) => {
                 if (user) return <Redirect to="/" />;
                 return (
                   <Col lg={8} md={8}>
@@ -173,6 +181,7 @@ class MainView extends React.Component {
                 );
               }}
             />
+            <Link to={`/users/${user}`}>{user}</Link>
             <Route
               path={"/users/${user}"}
               render={({ match, history }) => {
