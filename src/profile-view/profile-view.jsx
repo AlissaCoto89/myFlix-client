@@ -7,7 +7,7 @@ import FavoriteMovies from "./favorite-movies";
 import UpdateUser from "./update-user";
 import "../profile-view/profile-view.scss";
 
-export function ProfileView({
+export default function ProfileView({
   movies,
   onUpdatedUser,
   onBackClick,
@@ -20,7 +20,7 @@ export function ProfileView({
 
   const getUser = () => {
     axios
-      .get("https://my-flix-db-akc.herokuapp.com/users/${currentUser}", {
+      .get("https://my-flix-db-akc.herokuapp.com/users/${user}", {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((response) => {
