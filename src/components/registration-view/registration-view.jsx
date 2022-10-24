@@ -31,7 +31,7 @@ export function RegistrationView(props) {
     } else if (username.length < 5) {
       setValues({
         ...values,
-        usernameErr: "Username must be atleast 5 characters long.",
+        usernameErr: "Username must be at least 5 characters long.",
       });
       isReq = false;
     }
@@ -41,7 +41,7 @@ export function RegistrationView(props) {
     } else if (password.length < 4) {
       setValues({
         ...values,
-        passwordErr: "Password must be atleast 4 characters long",
+        passwordErr: "Password must be at least 4 characters long",
       });
       isReq = false;
     }
