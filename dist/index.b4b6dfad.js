@@ -27298,7 +27298,7 @@ MovieCard.propTypes = {
         Genre: (0, _propTypesDefault.default).string.isRequired,
         ImagePath: (0, _propTypesDefault.default).string.isRequired
     }).isRequired,
-    onMovieClick: (0, _propTypesDefault.default).func.isRequired
+    onMovieClick: (0, _propTypesDefault.default).func
 };
 
   $parcel$ReactRefreshHelpers$67b2.postlude(module);
@@ -31878,7 +31878,7 @@ MovieView.propTypes = {
         Director: (0, _propTypesDefault.default).shape({
             Name: (0, _propTypesDefault.default).string.isRequired,
             Bio: (0, _propTypesDefault.default).string.isRequired,
-            Birth: (0, _propTypesDefault.default).string.isRequired,
+            Birth: (0, _propTypesDefault.default).string,
             Death: (0, _propTypesDefault.default).string
         }).isRequired
     }).isRequired,
