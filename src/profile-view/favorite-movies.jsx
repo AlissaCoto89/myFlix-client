@@ -13,7 +13,7 @@ function FavoriteMovies({ favoriteMovieList, onRemoveFavorite }) {
           </Col>
         </Row>
         <Row>
-          {favoriteMovieList.map(({ ImagePath, Title, _id }) => {
+          {favoriteMovies.map(({ ImagePath, Title, _id }) => {
             return (
               <Col sm={12} md={6} lg={4} className="mt-3" key={`fav-${_id}`}>
                 <Figure>
