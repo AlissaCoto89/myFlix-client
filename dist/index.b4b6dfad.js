@@ -40255,6 +40255,31 @@ class DirectorView extends (0, _reactDefault.default).Component {
                     fileName: "src/director-view/director-view.jsx",
                     lineNumber: 31,
                     columnNumber: 9
+                }, this),
+                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Row), {
+                    className: "mt-3",
+                    children: [
+                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Col), {
+                            className: "label",
+                            children: "Death: "
+                        }, void 0, false, {
+                            fileName: "src/director-view/director-view.jsx",
+                            lineNumber: 36,
+                            columnNumber: 11
+                        }, this),
+                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Col), {
+                            className: "value",
+                            children: director.Death
+                        }, void 0, false, {
+                            fileName: "src/director-view/director-view.jsx",
+                            lineNumber: 37,
+                            columnNumber: 11
+                        }, this)
+                    ]
+                }, void 0, true, {
+                    fileName: "src/director-view/director-view.jsx",
+                    lineNumber: 35,
+                    columnNumber: 9
                 }, this)
             ]
         }, void 0, true, {
