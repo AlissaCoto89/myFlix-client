@@ -27157,9 +27157,10 @@ class MainView extends (0, _reactDefault.default).Component {
                                         md: 12,
                                         className: "px-0",
                                         children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _profileView.ProfileView), {
-                                            movies: movies,
-                                            goBack: history.goBack,
-                                            handleFavorite: this.handleFavorite
+                                            movies: this.state.movies,
+                                            onBackClick: ()=>history.goBack(),
+                                            onDeletedUser: ()=>this.onLoggedOut(),
+                                            onUpdatedUser: (newUserInfo)=>this.onUpdatedUser(newUserInfo)
                                         }, void 0, false, void 0, void 0)
                                     }, void 0, false, void 0, void 0);
                                 }
@@ -27183,7 +27184,7 @@ class MainView extends (0, _reactDefault.default).Component {
                                 }
                             }, void 0, false, {
                                 fileName: "src/components/main-view/main-view.jsx",
-                                lineNumber: 206,
+                                lineNumber: 209,
                                 columnNumber: 13
                             }, this)
                         ]
@@ -40796,7 +40797,7 @@ function FavoriteMovies({ favoriteMovieList , onRemoveFavorite  }) {
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Row), {
-                    children: favoriteMovieList.map(({ ImagePath , Title , _id  })=>{
+                    children: favoriteMovies.map(({ ImagePath , Title , _id  })=>{
                         return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Col), {
                             sm: 12,
                             md: 6,
