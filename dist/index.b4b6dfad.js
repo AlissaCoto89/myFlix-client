@@ -40292,7 +40292,7 @@ DirectorView.propTypes = {
     director: (0, _propTypesDefault.default).shape({
         Name: (0, _propTypesDefault.default).string.isRequired,
         Bio: (0, _propTypesDefault.default).string.isRequired,
-        Birth: (0, _propTypesDefault.default).string.isRequired,
+        Birth: (0, _propTypesDefault.default).string,
         Death: (0, _propTypesDefault.default).string
     }).isRequired
 };
@@ -40554,16 +40554,26 @@ var _favoriteMovies = require("./favorite-movies");
 var _favoriteMoviesDefault = parcelHelpers.interopDefault(_favoriteMovies);
 var _updateUser = require("./update-user");
 var _updateUserDefault = parcelHelpers.interopDefault(_updateUser);
-var _profileViewScss = require("./profile-view.scss");
+var _profileViewScss = require("../profile-view/profile-view.scss");
 var _s = $RefreshSig$();
-function ProfileView(props) {
+function ProfileView({ movies , onUpdatedUser , onBackClick , onDeletedUser ,  }) {
     _s();
     const [user, setUser] = (0, _react.useState)();
     const [favoriteMovies, setFavoriteMovies] = (0, _react.useState)([]);
-    const username = localStorage.getItem("user");
+    const currentUser = localStorage.getItem("user");
     const token = localStorage.getItem("token");
     const getUser = ()=>{
-        (0, _axiosDefault.default).get(`https://my-flix-db-akc.herokuapp.com/users/${user}`, {
+        (0, _axiosDefault.default).get("https://my-flix-db-akc.herokuapp.com/users/${user}", {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        }).then((response)=>{
+            setUser(response.data);
+            setFavoriteMovies(movies.filter((movie)=>response.data.FavoriteMovies.includes(movie._id)));
+        }).catch((error)=>console.error(error));
+    };
+    const removeFavorite = (movieId)=>{
+        (0, _axiosDefault.default).delete("https://my-flix-db-akc.herokuapp.com/users/${currentUser}/movies/${movieId}", {
             headers: {
                 Authorization: `Bearer ${token}`
             }
@@ -40579,7 +40589,7 @@ function ProfileView(props) {
         children: user && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
             children: [
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Button), {
-                    className: "newbutton",
+                    className: "mb-2 px-0",
                     onClick: ()=>{
                         onBackClick(null);
                     },
@@ -40587,7 +40597,7 @@ function ProfileView(props) {
                     children: "Back"
                 }, void 0, false, {
                     fileName: "src/profile-view/profile-view.jsx",
-                    lineNumber: 43,
+                    lineNumber: 65,
                     columnNumber: 11
                 }, this),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Row), {
@@ -40603,22 +40613,22 @@ function ProfileView(props) {
                                         email: user?.Email
                                     }, void 0, false, {
                                         fileName: "src/profile-view/profile-view.jsx",
-                                        lineNumber: 57,
+                                        lineNumber: 79,
                                         columnNumber: 19
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "src/profile-view/profile-view.jsx",
-                                    lineNumber: 56,
+                                    lineNumber: 78,
                                     columnNumber: 17
                                 }, this)
                             }, void 0, false, {
                                 fileName: "src/profile-view/profile-view.jsx",
-                                lineNumber: 55,
+                                lineNumber: 77,
                                 columnNumber: 15
                             }, this)
                         }, void 0, false, {
                             fileName: "src/profile-view/profile-view.jsx",
-                            lineNumber: 54,
+                            lineNumber: 76,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Col), {
@@ -40632,43 +40642,40 @@ function ProfileView(props) {
                                         handleSubmit: onUpdatedUser
                                     }, void 0, false, {
                                         fileName: "src/profile-view/profile-view.jsx",
-                                        lineNumber: 64,
+                                        lineNumber: 86,
                                         columnNumber: 19
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "src/profile-view/profile-view.jsx",
-                                    lineNumber: 63,
+                                    lineNumber: 85,
                                     columnNumber: 17
                                 }, this)
                             }, void 0, false, {
                                 fileName: "src/profile-view/profile-view.jsx",
-                                lineNumber: 62,
+                                lineNumber: 84,
                                 columnNumber: 15
                             }, this)
                         }, void 0, false, {
                             fileName: "src/profile-view/profile-view.jsx",
-                            lineNumber: 61,
+                            lineNumber: 83,
                             columnNumber: 13
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "src/profile-view/profile-view.jsx",
-                    lineNumber: 53,
+                    lineNumber: 75,
                     columnNumber: 11
                 }, this),
-                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _favoriteMoviesDefault.default), {
-                    favoriteMovieList: favoriteMovies,
-                    onRemoveFavorite: (movieId)=>removeFavorite(movieId)
-                }, void 0, false, {
+                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _favoriteMoviesDefault.default), {}, void 0, false, {
                     fileName: "src/profile-view/profile-view.jsx",
-                    lineNumber: 69,
+                    lineNumber: 91,
                     columnNumber: 11
                 }, this)
             ]
         }, void 0, true)
     }, void 0, false, {
         fileName: "src/profile-view/profile-view.jsx",
-        lineNumber: 40,
+        lineNumber: 62,
         columnNumber: 5
     }, this);
 }
@@ -40682,7 +40689,7 @@ $RefreshReg$(_c, "ProfileView");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","axios":"jo6P5","react-bootstrap":"3AD9A","@parcel/transformer-js/src/esmodule-helpers.js":"jCqbM","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"3Q88M","./profile-view.scss":"lAJas","./user-info":"2eWSJ","./favorite-movies":"0Q2no","./update-user":"cpaCm","prop-types":"7wKI2"}],"lAJas":[function() {},{}],"2eWSJ":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","axios":"jo6P5","react-bootstrap":"3AD9A","@parcel/transformer-js/src/esmodule-helpers.js":"jCqbM","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"3Q88M","./user-info":"2eWSJ","./favorite-movies":"0Q2no","./update-user":"cpaCm","../profile-view/profile-view.scss":"lAJas","prop-types":"7wKI2"}],"2eWSJ":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$3f8e = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -40959,6 +40966,6 @@ $RefreshReg$(_c, "UpdateUser");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","react-bootstrap":"3AD9A","@parcel/transformer-js/src/esmodule-helpers.js":"jCqbM","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"3Q88M"}],"eBaMl":[function() {},{}],"lJZlQ":[function() {},{}]},["d16Zh","bJfHe","d8Dch"], "d8Dch", "parcelRequireaec4")
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","react-bootstrap":"3AD9A","@parcel/transformer-js/src/esmodule-helpers.js":"jCqbM","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"3Q88M"}],"lAJas":[function() {},{}],"eBaMl":[function() {},{}],"lJZlQ":[function() {},{}]},["d16Zh","bJfHe","d8Dch"], "d8Dch", "parcelRequireaec4")
 
 //# sourceMappingURL=index.b4b6dfad.js.map

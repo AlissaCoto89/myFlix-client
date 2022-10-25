@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
-import { Button, Container, Form, Row, Col, Card } from "react-bootstrap";
+import PropTypes from "prop-types";
+import { Button, Card, Container, Row, Col } from "react-bootstrap";
+
 import UserInfo from "./user-info";
 import FavoriteMovies from "./favorite-movies";
 import UpdateUser from "./update-user";
 import "../profile-view/profile-view.scss";
 
-export default function ProfileView({
+export function ProfileView({
   movies,
   onUpdatedUser,
   onBackClick,
@@ -34,10 +35,6 @@ export default function ProfileView({
       .catch((error) => console.error(error));
   };
 
-  useEffect(() => {
-    getUser();
-  }, []);
-
   const removeFavorite = (movieId) => {
     axios
       .delete(
@@ -56,6 +53,10 @@ export default function ProfileView({
       })
       .catch((error) => console.error(error));
   };
+
+  useEffect(() => {
+    getUser();
+  }, []);
 
   return (
     <Container>
@@ -87,10 +88,7 @@ export default function ProfileView({
               </Card>
             </Col>
           </Row>
-          <FavoriteMovies
-            favoriteMovieList={favoriteMovies}
-            onRemoveFavorite={(movieId) => removeFavorite(movieId)}
-          />
+          <FavoriteMovies />
         </>
       )}
     </Container>
