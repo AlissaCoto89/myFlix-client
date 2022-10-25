@@ -40569,7 +40569,7 @@ function ProfileView({ movies , onUpdatedUser , onBackClick , onDeletedUser ,  }
             }
         }).then((response)=>{
             setUser(response.data);
-            setFavoriteMovies(movies.filter((movie)=>response.data.FavoriteMovies.includes(movie._id)));
+            setFavoriteMovies(favoriteMovies.filter((movie)=>response.data.favoriteMovies.includes(movie._id)));
         }).catch((error)=>console.error(error));
     };
     const removeFavorite = (movieId)=>{
@@ -40666,7 +40666,10 @@ function ProfileView({ movies , onUpdatedUser , onBackClick , onDeletedUser ,  }
                     lineNumber: 75,
                     columnNumber: 11
                 }, this),
-                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _favoriteMoviesDefault.default), {}, void 0, false, {
+                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _favoriteMoviesDefault.default), {
+                    favoriteMovieList: favoriteMovies,
+                    onRemoveFavorite: (movieId)=>removeFavorite(movieId)
+                }, void 0, false, {
                     fileName: "src/profile-view/profile-view.jsx",
                     lineNumber: 91,
                     columnNumber: 11

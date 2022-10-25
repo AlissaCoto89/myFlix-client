@@ -27,8 +27,8 @@ export function ProfileView({
       .then((response) => {
         setUser(response.data);
         setFavoriteMovies(
-          movies.filter((movie) =>
-            response.data.FavoriteMovies.includes(movie._id)
+          favoriteMovies.filter((movie) =>
+            response.data.favoriteMovies.includes(movie._id)
           )
         );
       })
@@ -88,7 +88,10 @@ export function ProfileView({
               </Card>
             </Col>
           </Row>
-          <FavoriteMovies />
+          <FavoriteMovies
+            favoriteMovieList={favoriteMovies}
+            onRemoveFavorite={(movieId) => removeFavorite(movieId)}
+          />
         </>
       )}
     </Container>
