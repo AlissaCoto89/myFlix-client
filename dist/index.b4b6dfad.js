@@ -31879,7 +31879,7 @@ MovieView.propTypes = {
             Name: (0, _propTypesDefault.default).string.isRequired,
             Bio: (0, _propTypesDefault.default).string.isRequired,
             Birth: (0, _propTypesDefault.default).string.isRequired,
-            Death: (0, _propTypesDefault.default).string.isRequired
+            Death: (0, _propTypesDefault.default).string
         }).isRequired
     }).isRequired,
     onBackClick: (0, _propTypesDefault.default).func.isRequired
@@ -40268,7 +40268,8 @@ DirectorView.propTypes = {
     director: (0, _propTypesDefault.default).shape({
         Name: (0, _propTypesDefault.default).string.isRequired,
         Bio: (0, _propTypesDefault.default).string.isRequired,
-        Birth: (0, _propTypesDefault.default).string.isRequired
+        Birth: (0, _propTypesDefault.default).string.isRequired,
+        Death: (0, _propTypesDefault.default).string
     }).isRequired
 };
 
