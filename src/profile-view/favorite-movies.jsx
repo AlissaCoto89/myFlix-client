@@ -3,26 +3,29 @@ import { Link } from "react-router-dom";
 import { Col, Row, Figure, Button, Card } from "react-bootstrap";
 import "./profile-view.scss";
 
-function FavoriteMovies({ favoriteMovieList, onRemoveFavorite }) {
+function FavoriteMovies({ favoriteMovieList, onRemoveFavorite, movie }) {
   return (
     <Card className="mb-3">
       <Card.Body>
         <Row>
           <Col>
-            <h4>Favorite Movies</h4>
+            <h4>My Favorite Movies</h4>
           </Col>
         </Row>
         <Row>
-          {favoriteMovies.map(({ ImagePath, Title, _id }) => {
+          {favoriteMovieList.map(() => {
             return (
-              <Col sm={12} md={6} lg={4} className="mt-3" key={`fav-${_id}`}>
+              <Col sm={12} md={6} lg={4} className="mt-3">
                 <Figure>
-                  <Link to={`/movies/${_id}`}>
+                  <Link to={`/movies/${movie}`}>
                     <Figure.Image src={ImagePath} alt={Title} />
                     <Figure.Caption>{Title}</Figure.Caption>
                   </Link>
                 </Figure>
-                <Button variant="danger" onClick={() => onRemoveFavorite(_id)}>
+                <Button
+                  variant="danger"
+                  onClick={() => onRemoveFavorite(movie)}
+                >
                   Remove
                 </Button>
               </Col>
