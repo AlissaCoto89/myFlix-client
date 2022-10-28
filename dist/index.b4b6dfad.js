@@ -39840,7 +39840,7 @@ function LoginView(props) {
             const data = response.data;
             props.onLoggedIn(data);
         }).catch((e)=>{
-            console.log("no such user!");
+            alert("Invalid Username or Password was entered!");
         });
     };
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Container), {
