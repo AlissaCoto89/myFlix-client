@@ -4,43 +4,63 @@ import { CardGroup, Button, Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import "./movie-view.scss";
 
-export class MovieView extends React.Component {
-  keypressCallback(event) {
-    console.log(event.key);
-  }
-  componentDidMount() {
-    document.addEventListener("keypress", this.keypressCallback);
-  }
+export default class MovieView extends React.Component {
   render() {
-    const { movie, onBackClick } = this.props;
+    const { movie, addFavorite, onBackClick } = this.props;
     return (
-      <div className="movie-view">
-        <div className="movie-poster">
-          <img src={movie.ImagePath} />
-        </div>
-        <div className="movie-title">
-          <span className="label">Title: </span>
-          <span className="value">{movie.Title}</span>
-        </div>
-        <div className="movie-description">
-          <span className="label">Description: </span>
-          <span className="value">{movie.Description}</span>
-        </div>
-        <Link to={`/directors/${movie.Director.Name}`}>
-          <Button variant="link">Director</Button>
-        </Link>
-
-        <Link to={`/genres/${movie.Genre.Name}`}>
-          <Button variant="link">Genre</Button>
-        </Link>
-        <button
-          onClick={() => {
-            onBackClick();
-          }}
-        >
-          Back
-        </button>
-      </div>
+      <Card bg="light" text="dark">
+        <Card.Header className="text-center" as="h5">
+          {movie.Title}
+        </Card.Header>
+        <Card.Body>
+          <CardGroup>
+            <Card bg="light" border="dark" text="dark">
+              <Card.Img
+                className="movie-poster"
+                as="img"
+                crossOrigin="anonymous | use-credentials"
+                src={movie.ImagePath}
+              />
+              <Card bg="light" border="dark" text="dark">
+                <Card.Body className="movie-textarea">
+                  <span className="movie-description">{movie.Description}</span>
+                  <div className="movie-director-link">
+                    <span className="label">Director: </span>
+                    <Link to={`/directors/${movie.Director.Name}`}>
+                      <Button variant="link">Director</Button>
+                    </Link>
+                  </div>
+                  <div className="movie-genre-link">
+                    <span className="label">Genre: </span>
+                    <Link to={`/genres/${movie.Genre.Name}`}>
+                      <Button variant="link">Genre</Button>
+                    </Link>
+                  </div>
+                </Card.Body>
+              </Card>
+            </Card>
+          </CardGroup>
+        </Card.Body>
+        <Card.Footer className="text-right">
+          <Button
+            className="button-movie-view-add-favorite"
+            variant="primary"
+            type="button"
+            onClick={() => addFavorite(movie)}
+          >
+            Add To My Favorite Movies
+          </Button>
+          <Button
+            className="button-movie-view"
+            variant="secondary"
+            onClick={() => {
+              onBackClick();
+            }}
+          >
+            Back
+          </Button>
+        </Card.Footer>
+      </Card>
     );
   }
 }
