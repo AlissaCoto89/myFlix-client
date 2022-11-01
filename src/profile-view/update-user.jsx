@@ -90,13 +90,17 @@ function UpdateUser(user) {
   const handleDelete = (e) => {
     e.preventDefault();
     const token = localStorage.getItem("token");
-    if (confirm("Are you sure? This cannot be undone!")) {
+    if (
+      confirm(
+        "Are you sure? This cannot be undone! Click OK to delete account."
+      )
+    ) {
       axios
         .delete(`https://my-flix-db-akc.herokuapp.com/users/${currentUser}`, {
           headers: { Authorization: `Bearer ${token}` },
         })
         .then((res) => {
-          alert("Your account has been deleted!");
+          alert("Your account has been deleted successfully!");
           localStorage.clear();
           window.open("/", "_self");
         })

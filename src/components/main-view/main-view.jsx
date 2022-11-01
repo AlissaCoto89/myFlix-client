@@ -1,8 +1,7 @@
 import React from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
 import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
-import { Container, Row, Col } from "react-bootstrap";
+import { Container, Row, Col, Navbar } from "react-bootstrap";
 import Navbar from "../../navbar/navbar";
 import LoginView from "../login-view/login-view";
 import { MovieCard } from "../movie-card/movie-card";
@@ -43,7 +42,7 @@ class MainView extends React.Component {
           movies: response.data,
         });
       })
-      .catch(function (error) {
+      .catch((error) => {
         console.log(error);
       });
   }
@@ -87,7 +86,7 @@ class MainView extends React.Component {
     console.log(favoriteMovies);
     return (
       <Router>
-        <Navbar user={user} />
+        <Navbar user={user} onLogOut={() => this.onLoggedOut()} />
         <Container>
           <Row className="main-view justify-content-md-center">
             <Route
@@ -224,5 +223,4 @@ class MainView extends React.Component {
     );
   }
 }
-
 export default MainView;
