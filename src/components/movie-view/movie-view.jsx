@@ -21,10 +21,15 @@ export default function MovieView({ movie, onBackClick }) {
       .catch((error) => console.error(error));
   };
 
-  const addFavorite = (username, movieId) => {
+  addFavorite = (username, movieId) => {
+    console.log(username);
+    console.log(movieId);
     axios
       .post(
-        `https://my-flix-db-akc.herokuapp.com/users/${username}/movies/${movieId}`
+        `https://my-flix-db-akc.herokuapp.com/users/${username}/movies/${movieId}`,
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
       )
       .then((response) => {
         setFavoriteMovies(response.data.FavoriteMovies);
@@ -35,7 +40,10 @@ export default function MovieView({ movie, onBackClick }) {
   const removeFavorite = (username, movieId) => {
     axios
       .delete(
-        `https://my-flix-db-akc.herokuapp.com/users/${username}/movies/${movieId}`
+        `https://my-flix-db-akc.herokuapp.com/users/${username}/movies/${movieId}`,
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
       )
       .then((response) => {
         setFavoriteMovies(response.data.FavoriteMovies);
@@ -43,7 +51,7 @@ export default function MovieView({ movie, onBackClick }) {
       .catch((error) => console.error(error));
   };
 
-  useEffect(() => {
+  useState(() => {
     getFavorite(currentUser);
   }, []);
 
@@ -55,12 +63,7 @@ export default function MovieView({ movie, onBackClick }) {
       <Card.Body>
         <CardGroup>
           <Card bg="light" border="dark" text="dark">
-            <Card.Img
-              className="movie-poster"
-              as="img"
-              crossOrigin="anonymous | use-credentials"
-              src={movie.ImagePath}
-            />
+            <Card.Img className="movie-poster" as="img" src={movie.ImagePath} />
             <Card bg="light" border="dark" text="dark">
               <Card.Body className="movie-textarea">
                 <span className="movie-description">{movie.Description}</span>
@@ -92,7 +95,7 @@ export default function MovieView({ movie, onBackClick }) {
             </Button>
           ) : (
             <Button
-              variant="primary"
+              variant="prima"
               onClick={() => addFavorite(currentUser, movie._id)}
             >
               Add Movie to Favorites

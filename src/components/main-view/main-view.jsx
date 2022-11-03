@@ -138,7 +138,7 @@ class MainView extends React.Component {
                 return (
                   <Col>
                     <ProfileView
-                      favoriteMovies={favoriteMovies.map((movieId) => {
+                      favoriteMovieList={favoriteMovies.map((movieId) => {
                         return movies.find((m) => m._id === movieId);
                       })}
                       user={user}

@@ -1,16 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import PropTypes from "prop-types";
-import {
-  Button,
-  Card,
-  CardGroup,
-  Form,
-  Container,
-  Row,
-  Col,
-} from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Button, Card, Container, Row, Col } from "react-bootstrap";
 import UserInfo from "./user-info";
 import FavoriteMovies from "./favorite-movies";
 import UpdateUser from "./update-user";
@@ -24,6 +14,7 @@ export function ProfileView({
 }) {
   const [user, setUser] = useState();
   const [favoriteMovies, setFavoriteMovies] = useState([]);
+  console.log(favoriteMovies);
   const currentUser = localStorage.getItem("user");
   const token = localStorage.getItem("token");
 
@@ -46,25 +37,6 @@ export function ProfileView({
   useEffect(() => {
     getUser();
   }, []);
-
-  const removeFavorite = (movieId) => {
-    axios
-      .delete(
-        `https://my-flix-db-akc.herokuapp.com/users/${currentUser}/movies/${movieId}`,
-        {
-          headers: { Authorization: `Bearer ${token}` },
-        }
-      )
-      .then((response) => {
-        setUser(response.data);
-        setFavoriteMovies(
-          movies.filter((movie) =>
-            response.data.FavoriteMovies.includes(movie._id)
-          )
-        );
-      })
-      .catch((error) => console.error(error));
-  };
 
   return (
     <Container>
