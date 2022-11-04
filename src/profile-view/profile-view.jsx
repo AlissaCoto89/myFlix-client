@@ -38,6 +38,42 @@ export function ProfileView({
     getUser();
   }, []);
 
+  addFavorite = (username, movieId) => {
+    console.log(username);
+    console.log(movieId);
+    console.log(token);
+
+    axios
+      .post(
+        `https://my-flix-db-akc.herokuapp.com/users/${username}/movies/${movieId}`,
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      )
+      .then((response) => {
+        setFavoriteMovies(response.data.favoriteMovieList);
+      })
+      .catch((error) => console.error(error));
+  };
+
+  const removeFavorite = (username, movieId) => {
+    axios
+      .delete(
+        `https://my-flix-db-akc.herokuapp.com/users/${username}/movies/${movieId}`,
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      )
+      .then((response) => {
+        setFavoriteMovies(response.data.favoriteMovieList);
+      })
+      .catch((error) => console.error(error));
+  };
+
+  useState(() => {
+    getFavorite(currentUser);
+  }, []);
+
   return (
     <Container>
       {user && (
