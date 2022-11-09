@@ -24,7 +24,6 @@ export default function MovieView({ movie, onBackClick }) {
   const addFavorite = (username, movieId) => {
     console.log(username);
     console.log(movieId);
-    console.log(token);
 
     axios
       .post(
@@ -39,10 +38,6 @@ export default function MovieView({ movie, onBackClick }) {
       .catch((error) => console.error(error));
   };
 
-  useEffect(() => {
-    getFavorite(currentUser);
-  }, []);
-
   const removeFavorite = (username, movieId) => {
     axios
       .delete(
@@ -56,6 +51,10 @@ export default function MovieView({ movie, onBackClick }) {
       })
       .catch((error) => console.error(error));
   };
+
+  useEffect(() => {
+    getFavorite(currentUser);
+  }, []);
 
   return (
     <Card bg="light" text="dark">

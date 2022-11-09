@@ -12,13 +12,14 @@ import { GenreView } from "../../genre-view/genre-view";
 import { ProfileView } from "../../profile-view/profile-view";
 import "./main-view.scss";
 
-class MainView extends React.Component {
+export default class MainView extends React.Component {
   constructor() {
     super();
     this.state = {
       movies: [],
+      selectedMovie: null,
       user: null,
-      favoriteMovies: [],
+      isRegistering: false,
     };
   }
 
@@ -30,6 +31,28 @@ class MainView extends React.Component {
       });
       this.getMovies(accessToken);
     }
+  }
+
+  setSelectedMovie(newSelectedMovie) {
+    this.setState({
+      selectedMovie: newSelectedMovie,
+    });
+  }
+
+  setIsRegistering(status) {
+    this.setState({
+      isRegistering: status,
+    });
+  }
+
+  onLoggedIn(authData) {
+    this.setState({
+      user: authData.user.Username,
+    });
+
+    localStorage.setItem("token", authData.token);
+    localStorage.setItem("user", authData.user.Username);
+    this.getMovies(authData.token);
   }
 
   getMovies(token) {
@@ -47,43 +70,17 @@ class MainView extends React.Component {
       });
   }
 
-  onLoggedIn(authData) {
-    console.log(authData);
-    const { Username, FavoriteMovies } = authData.user;
-    this.setState({
-      user: Username,
-      favoriteMovies: FavoriteMovies || [],
-    });
-
-    localStorage.setItem("token", authData.token);
-    localStorage.setItem("user", authData.user.Username);
-    this.getMovies(authData.token);
-  }
-
-  setSelectedMovie(movie) {
-    this.setState({
-      selectedMovie: movie,
-    });
-  }
-
-  setIsRegistering(status) {
-    this.setState({
-      isRegistering: status,
-    });
-  }
-
   onLoggedOut() {
     localStorage.removeItem("token");
     localStorage.removeItem("user");
     this.setState({
-      selectedMovies: null,
+      selectedMovie: null,
       user: null,
     });
   }
 
   render() {
-    const { movies, user, favoriteMovies } = this.state;
-    console.log(favoriteMovies);
+    const { movies, user } = this.state;
     return (
       <Router>
         <Navbar user={user} onLogOut={() => this.onLoggedOut()} />
@@ -104,7 +101,7 @@ class MainView extends React.Component {
                   );
                 if (movies.length === 0) return <div className="main-view" />;
                 return movies.map((m) => (
-                  <Col sm={3} key={m._id} className="movie-card">
+                  <Col sm={3} key={m._id} className="mb-3">
                     <MovieCard movie={m} />
                   </Col>
                 ));
@@ -112,11 +109,13 @@ class MainView extends React.Component {
             />
             <Route
               path="/register"
-              render={() => {
+              render={({ history }) => {
                 if (user) return <Redirect to="/" />;
                 return (
                   <Col>
-                    <RegistrationView />
+                    <RegistrationView
+                      onSucessfulRegistration={() => history.push("/")}
+                    />
                   </Col>
                 );
               }}
@@ -127,10 +126,7 @@ class MainView extends React.Component {
                 if (!user)
                   return (
                     <Col>
-                      <LoginView
-                        movies={movies}
-                        onLoggedIn={(user) => this.onLoggedIn(user)}
-                      />
+                      <LoginView onLoggedIn={(user) => this.onLoggedIn(user)} />
                     </Col>
                   );
                 if (movies.length === 0) return <div className="main-view" />;
@@ -138,11 +134,12 @@ class MainView extends React.Component {
                 return (
                   <Col>
                     <ProfileView
-                      favoriteMovieList={favoriteMovies.map((movieId) => {
-                        return movies.find((m) => m._id === movieId);
-                      })}
-                      user={user}
+                      movies={this.state.movies}
                       onBackClick={() => history.goBack()}
+                      onDeletedUser={() => this.onLoggedOut()}
+                      onUpdatedUser={(newUserInfo) =>
+                        this.onUpdatedUser(newUserInfo)
+                      }
                     />
                   </Col>
                 );
@@ -153,10 +150,7 @@ class MainView extends React.Component {
               render={({ match, history }) => {
                 if (!user) return;
                 <Col md={4}>
-                  <LoginView
-                    movies={movies}
-                    onLoggedIn={(user) => this.onLoggedIn(user)}
-                  />
+                  <LoginView onLoggedIn={(user) => this.onLoggedIn(user)} />
                 </Col>;
                 if (movies.length === 0) return <div className="main-view" />;
                 return (
@@ -223,4 +217,3 @@ class MainView extends React.Component {
     );
   }
 }
-export default MainView;

@@ -6,10 +6,9 @@ import FavoriteMovies from "./favorite-movies";
 import UpdateUser from "./update-user";
 import "../profile-view/profile-view.scss";
 
-export function ProfileView({ onUpdatedUser, onBackClick }) {
+export function ProfileView({ movies, onUpdatedUser, onBackClick }) {
   const [user, setUser] = useState();
   const [favoriteMovies, setFavoriteMovies] = useState([]);
-  console.log(favoriteMovies);
   const currentUser = localStorage.getItem("user");
   const token = localStorage.getItem("token");
 
@@ -21,7 +20,7 @@ export function ProfileView({ onUpdatedUser, onBackClick }) {
       .then((response) => {
         setUser(response.data);
         setFavoriteMovies(
-          favoriteMovies.filter((movie) =>
+          movies.filter((movie) =>
             response.data.FavoriteMovies.includes(movie._id)
           )
         );
@@ -33,21 +32,6 @@ export function ProfileView({ onUpdatedUser, onBackClick }) {
     getUser();
   }, []);
 
-  const getFavorite = (username, movieId) => {
-    axios
-      .get(
-        `https://my-flix-db-akc.herokuapp.com/users/${username}/movies/${movieId}`
-      )
-      .then((response) => {
-        setFavoriteMovies(response.data.FavoriteMovies);
-      })
-      .catch((error) => console.error(error));
-  };
-
-  useEffect(() => {
-    getFavorite(currentUser);
-  }, []);
-
   const removeFavorite = (username, movieId) => {
     axios
       .delete(
@@ -56,10 +40,11 @@ export function ProfileView({ onUpdatedUser, onBackClick }) {
           headers: { Authorization: `Bearer ${token}` },
         }
       )
+
       .then((response) => {
         setUser(response.data);
         setFavoriteMovies(
-          favoriteMovies.filter((movie) =>
+          movies.filter((movie) =>
             response.data.FavoriteMovies.includes(movie._id)
           )
         );
