@@ -1,14 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import {
-  Form,
-  Button,
-  Card,
-  CardGroup,
-  Container,
-  Col,
-  Row,
-} from "react-bootstrap";
+import { Form, Button, Card, CardGroup, Container } from "react-bootstrap";
 
 function UpdateUser(user) {
   const [username, setUsername] = useState("");

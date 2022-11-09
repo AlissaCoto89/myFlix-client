@@ -6,12 +6,7 @@ import FavoriteMovies from "./favorite-movies";
 import UpdateUser from "./update-user";
 import "../profile-view/profile-view.scss";
 
-export function ProfileView({
-  movies,
-  onUpdatedUser,
-  onBackClick,
-  onDeletedUser,
-}) {
+export function ProfileView({ onUpdatedUser, onBackClick }) {
   const [user, setUser] = useState();
   const [favoriteMovies, setFavoriteMovies] = useState([]);
   console.log(favoriteMovies);
@@ -27,7 +22,7 @@ export function ProfileView({
         setUser(response.data);
         setFavoriteMovies(
           favoriteMovies.filter((movie) =>
-            response.data.favoriteMovies.includes(movie._id)
+            response.data.FavoriteMovies.includes(movie._id)
           )
         );
       })
@@ -38,23 +33,20 @@ export function ProfileView({
     getUser();
   }, []);
 
-  addFavorite = (username, movieId) => {
-    console.log(username);
-    console.log(movieId);
-    console.log(token);
-
+  const getFavorite = (username, movieId) => {
     axios
-      .post(
-        `https://my-flix-db-akc.herokuapp.com/users/${username}/movies/${movieId}`,
-        {
-          headers: { Authorization: `Bearer ${token}` },
-        }
+      .get(
+        `https://my-flix-db-akc.herokuapp.com/users/${username}/movies/${movieId}`
       )
       .then((response) => {
-        setFavoriteMovies(response.data.favoriteMovieList);
+        setFavoriteMovies(response.data.FavoriteMovies);
       })
       .catch((error) => console.error(error));
   };
+
+  useEffect(() => {
+    getFavorite(currentUser);
+  }, []);
 
   const removeFavorite = (username, movieId) => {
     axios
@@ -65,15 +57,15 @@ export function ProfileView({
         }
       )
       .then((response) => {
-        setFavoriteMovies(response.data.favoriteMovieList);
+        setUser(response.data);
+        setFavoriteMovies(
+          favoriteMovies.filter((movie) =>
+            response.data.FavoriteMovies.includes(movie._id)
+          )
+        );
       })
       .catch((error) => console.error(error));
   };
-
-  useState(() => {
-    getFavorite(currentUser);
-  }, []);
-
   return (
     <Container>
       {user && (
@@ -104,10 +96,18 @@ export function ProfileView({
               </Card>
             </Col>
           </Row>
-          <FavoriteMovies
-            favoriteMovieList={favoriteMovies}
-            onRemoveFavorite={(movieId) => removeFavorite(movieId)}
-          />
+          <Row>
+            <Col>
+              <Card className="mb-4">
+                <Card.Body>
+                  <FavoriteMovies
+                    favoriteMovieList={favoriteMovies}
+                    onRemoveFavorite={(movieId) => removeFavorite(movieId)}
+                  />
+                </Card.Body>
+              </Card>
+            </Col>
+          </Row>
         </>
       )}
     </Container>
