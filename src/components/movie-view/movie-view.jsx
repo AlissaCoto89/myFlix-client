@@ -28,7 +28,10 @@ export default function MovieView({ movie, onBackClick }) {
 
     axios
       .post(
-        `https://my-flix-db-akc.herokuapp.com/users/${username}/movies/${movieId}`
+        `https://my-flix-db-akc.herokuapp.com/users/${username}/movies/${movieId}`,
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
       )
       .then((response) => {
         setFavoriteMovies(response.data.FavoriteMovies);
@@ -39,7 +42,10 @@ export default function MovieView({ movie, onBackClick }) {
   const removeFavorite = (username, movieId) => {
     axios
       .delete(
-        `https://my-flix-db-akc.herokuapp.com/users/${username}/movies/${movieId}`
+        `https://my-flix-db-akc.herokuapp.com/users/${username}/movies/${movieId}`,
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
       )
       .then((response) => {
         setFavoriteMovies(response.data.FavoriteMovies);
