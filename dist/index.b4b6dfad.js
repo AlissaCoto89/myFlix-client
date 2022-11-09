@@ -40913,7 +40913,7 @@ function UserInfo({ email , name  }) {
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
         children: [
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h5", {
-                children: "Your Info"
+                children: "User Info"
             }, void 0, false, {
                 fileName: "src/profile-view/user-info.jsx",
                 lineNumber: 6,
@@ -41048,186 +41048,10 @@ function UpdateUser(user) {
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Container), {
         className: "profile-container",
         children: [
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Card).Body, {
-                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.CardGroup), {
-                    children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Card), {
-                        bg: "light",
-                        border: "dark",
-                        text: "dark",
-                        children: [
-                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
-                                className: "label text-center headline-profile-update",
-                                children: "Update User Profile"
-                            }, void 0, false, {
-                                fileName: "src/profile-view/update-user.jsx",
-                                lineNumber: 108,
-                                columnNumber: 13
-                            }, this),
-                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form), {
-                                children: [
-                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Group, {
-                                        className: "profile-form-group-username",
-                                        controlId: "formGroupUsername",
-                                        children: [
-                                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Label, {
-                                                children: "Username:"
-                                            }, void 0, false, {
-                                                fileName: "src/profile-view/update-user.jsx",
-                                                lineNumber: 116,
-                                                columnNumber: 17
-                                            }, this),
-                                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Control, {
-                                                type: "text",
-                                                value: username,
-                                                onChange: (e)=>setUsername(e.target.value),
-                                                placeholder: "Enter your new username",
-                                                required: true
-                                            }, void 0, false, {
-                                                fileName: "src/profile-view/update-user.jsx",
-                                                lineNumber: 117,
-                                                columnNumber: 17
-                                            }, this),
-                                            usernameErr && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
-                                                children: usernameErr
-                                            }, void 0, false, {
-                                                fileName: "src/profile-view/update-user.jsx",
-                                                lineNumber: 124,
-                                                columnNumber: 33
-                                            }, this)
-                                        ]
-                                    }, void 0, true, {
-                                        fileName: "src/profile-view/update-user.jsx",
-                                        lineNumber: 112,
-                                        columnNumber: 15
-                                    }, this),
-                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Group, {
-                                        className: "profile-form-group-password",
-                                        controlId: "formGroupPassword",
-                                        children: [
-                                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Label, {
-                                                children: "Password:"
-                                            }, void 0, false, {
-                                                fileName: "src/profile-view/update-user.jsx",
-                                                lineNumber: 130,
-                                                columnNumber: 17
-                                            }, this),
-                                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Control, {
-                                                type: "password",
-                                                value: password,
-                                                onChange: (e)=>setPassword(e.target.value),
-                                                placeholder: "Enter your new password",
-                                                minLength: "6",
-                                                required: true
-                                            }, void 0, false, {
-                                                fileName: "src/profile-view/update-user.jsx",
-                                                lineNumber: 131,
-                                                columnNumber: 17
-                                            }, this),
-                                            passwordErr && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
-                                                children: passwordErr
-                                            }, void 0, false, {
-                                                fileName: "src/profile-view/update-user.jsx",
-                                                lineNumber: 139,
-                                                columnNumber: 33
-                                            }, this)
-                                        ]
-                                    }, void 0, true, {
-                                        fileName: "src/profile-view/update-user.jsx",
-                                        lineNumber: 126,
-                                        columnNumber: 15
-                                    }, this),
-                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Group, {
-                                        className: "profile-form-group-email",
-                                        controlId: "formGroupEmail",
-                                        children: [
-                                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Label, {
-                                                children: "Email:"
-                                            }, void 0, false, {
-                                                fileName: "src/profile-view/update-user.jsx",
-                                                lineNumber: 145,
-                                                columnNumber: 17
-                                            }, this),
-                                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Control, {
-                                                type: "email",
-                                                value: email,
-                                                onChange: (e)=>setEmail(e.target.value),
-                                                placeholder: "Enter your email address",
-                                                required: true
-                                            }, void 0, false, {
-                                                fileName: "src/profile-view/update-user.jsx",
-                                                lineNumber: 146,
-                                                columnNumber: 17
-                                            }, this),
-                                            emailErr && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
-                                                children: emailErr
-                                            }, void 0, false, {
-                                                fileName: "src/profile-view/update-user.jsx",
-                                                lineNumber: 153,
-                                                columnNumber: 30
-                                            }, this)
-                                        ]
-                                    }, void 0, true, {
-                                        fileName: "src/profile-view/update-user.jsx",
-                                        lineNumber: 141,
-                                        columnNumber: 15
-                                    }, this),
-                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Group, {
-                                        className: "profile-form-group-birthday",
-                                        controlId: "formGroupBirthday",
-                                        children: [
-                                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Label, {
-                                                children: "Birthday:"
-                                            }, void 0, false, {
-                                                fileName: "src/profile-view/update-user.jsx",
-                                                lineNumber: 159,
-                                                columnNumber: 17
-                                            }, this),
-                                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Control, {
-                                                type: "date",
-                                                value: birthday,
-                                                onChange: (e)=>setBirthday(e.target.value),
-                                                placeholder: "Enter your birthday"
-                                            }, void 0, false, {
-                                                fileName: "src/profile-view/update-user.jsx",
-                                                lineNumber: 160,
-                                                columnNumber: 17
-                                            }, this),
-                                            birthdayErr && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
-                                                children: birthdayErr
-                                            }, void 0, false, {
-                                                fileName: "src/profile-view/update-user.jsx",
-                                                lineNumber: 166,
-                                                columnNumber: 33
-                                            }, this)
-                                        ]
-                                    }, void 0, true, {
-                                        fileName: "src/profile-view/update-user.jsx",
-                                        lineNumber: 155,
-                                        columnNumber: 15
-                                    }, this),
-                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Button), {
-                                        className: "button-profile-view-update",
-                                        variant: "secondary",
-                                        type: "submit",
-                                        onClick: handleUpdate,
-                                        children: "Update"
-                                    }, void 0, false, {
-                                        fileName: "src/profile-view/update-user.jsx",
-                                        lineNumber: 168,
-                                        columnNumber: 15
-                                    }, this)
-                                ]
-                            }, void 0, true, {
-                                fileName: "src/profile-view/update-user.jsx",
-                                lineNumber: 111,
-                                columnNumber: 13
-                            }, this)
-                        ]
-                    }, void 0, true, {
-                        fileName: "src/profile-view/update-user.jsx",
-                        lineNumber: 107,
-                        columnNumber: 11
-                    }, this)
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+                className: "label text-center headline-profile-update",
+                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h5", {
+                    children: "Update User Profile"
                 }, void 0, false, {
                     fileName: "src/profile-view/update-user.jsx",
                     lineNumber: 106,
@@ -41236,6 +41060,186 @@ function UpdateUser(user) {
             }, void 0, false, {
                 fileName: "src/profile-view/update-user.jsx",
                 lineNumber: 105,
+                columnNumber: 7
+            }, this),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Card).Body, {
+                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.CardGroup), {
+                    children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Card), {
+                        bg: "light",
+                        border: "dark",
+                        text: "dark",
+                        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form), {
+                            children: [
+                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Group, {
+                                    className: "profile-form-group-username",
+                                    controlId: "formGroupUsername",
+                                    children: [
+                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Label, {
+                                            children: "Username:"
+                                        }, void 0, false, {
+                                            fileName: "src/profile-view/update-user.jsx",
+                                            lineNumber: 116,
+                                            columnNumber: 17
+                                        }, this),
+                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Control, {
+                                            type: "text",
+                                            value: username,
+                                            onChange: (e)=>setUsername(e.target.value),
+                                            placeholder: "Enter your new username",
+                                            required: true
+                                        }, void 0, false, {
+                                            fileName: "src/profile-view/update-user.jsx",
+                                            lineNumber: 117,
+                                            columnNumber: 17
+                                        }, this),
+                                        usernameErr && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
+                                            children: usernameErr
+                                        }, void 0, false, {
+                                            fileName: "src/profile-view/update-user.jsx",
+                                            lineNumber: 124,
+                                            columnNumber: 33
+                                        }, this)
+                                    ]
+                                }, void 0, true, {
+                                    fileName: "src/profile-view/update-user.jsx",
+                                    lineNumber: 112,
+                                    columnNumber: 15
+                                }, this),
+                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Group, {
+                                    className: "profile-form-group-password",
+                                    controlId: "formGroupPassword",
+                                    children: [
+                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Label, {
+                                            children: "Password:"
+                                        }, void 0, false, {
+                                            fileName: "src/profile-view/update-user.jsx",
+                                            lineNumber: 130,
+                                            columnNumber: 17
+                                        }, this),
+                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Control, {
+                                            type: "password",
+                                            value: password,
+                                            onChange: (e)=>setPassword(e.target.value),
+                                            placeholder: "Enter your new password",
+                                            minLength: "6",
+                                            required: true
+                                        }, void 0, false, {
+                                            fileName: "src/profile-view/update-user.jsx",
+                                            lineNumber: 131,
+                                            columnNumber: 17
+                                        }, this),
+                                        passwordErr && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
+                                            children: passwordErr
+                                        }, void 0, false, {
+                                            fileName: "src/profile-view/update-user.jsx",
+                                            lineNumber: 139,
+                                            columnNumber: 33
+                                        }, this)
+                                    ]
+                                }, void 0, true, {
+                                    fileName: "src/profile-view/update-user.jsx",
+                                    lineNumber: 126,
+                                    columnNumber: 15
+                                }, this),
+                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Group, {
+                                    className: "profile-form-group-email",
+                                    controlId: "formGroupEmail",
+                                    children: [
+                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Label, {
+                                            children: "Email:"
+                                        }, void 0, false, {
+                                            fileName: "src/profile-view/update-user.jsx",
+                                            lineNumber: 145,
+                                            columnNumber: 17
+                                        }, this),
+                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Control, {
+                                            type: "email",
+                                            value: email,
+                                            onChange: (e)=>setEmail(e.target.value),
+                                            placeholder: "Enter your email address",
+                                            required: true
+                                        }, void 0, false, {
+                                            fileName: "src/profile-view/update-user.jsx",
+                                            lineNumber: 146,
+                                            columnNumber: 17
+                                        }, this),
+                                        emailErr && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
+                                            children: emailErr
+                                        }, void 0, false, {
+                                            fileName: "src/profile-view/update-user.jsx",
+                                            lineNumber: 153,
+                                            columnNumber: 30
+                                        }, this)
+                                    ]
+                                }, void 0, true, {
+                                    fileName: "src/profile-view/update-user.jsx",
+                                    lineNumber: 141,
+                                    columnNumber: 15
+                                }, this),
+                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Group, {
+                                    className: "profile-form-group-birthday",
+                                    controlId: "formGroupBirthday",
+                                    children: [
+                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Label, {
+                                            children: "Birthday:"
+                                        }, void 0, false, {
+                                            fileName: "src/profile-view/update-user.jsx",
+                                            lineNumber: 159,
+                                            columnNumber: 17
+                                        }, this),
+                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Control, {
+                                            type: "date",
+                                            value: birthday,
+                                            onChange: (e)=>setBirthday(e.target.value),
+                                            placeholder: "Enter your birthday"
+                                        }, void 0, false, {
+                                            fileName: "src/profile-view/update-user.jsx",
+                                            lineNumber: 160,
+                                            columnNumber: 17
+                                        }, this),
+                                        birthdayErr && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
+                                            children: birthdayErr
+                                        }, void 0, false, {
+                                            fileName: "src/profile-view/update-user.jsx",
+                                            lineNumber: 166,
+                                            columnNumber: 33
+                                        }, this)
+                                    ]
+                                }, void 0, true, {
+                                    fileName: "src/profile-view/update-user.jsx",
+                                    lineNumber: 155,
+                                    columnNumber: 15
+                                }, this),
+                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Button), {
+                                    className: "button-profile-view-update",
+                                    variant: "secondary",
+                                    type: "submit",
+                                    onClick: handleUpdate,
+                                    children: "Update"
+                                }, void 0, false, {
+                                    fileName: "src/profile-view/update-user.jsx",
+                                    lineNumber: 168,
+                                    columnNumber: 15
+                                }, this)
+                            ]
+                        }, void 0, true, {
+                            fileName: "src/profile-view/update-user.jsx",
+                            lineNumber: 111,
+                            columnNumber: 13
+                        }, this)
+                    }, void 0, false, {
+                        fileName: "src/profile-view/update-user.jsx",
+                        lineNumber: 110,
+                        columnNumber: 11
+                    }, this)
+                }, void 0, false, {
+                    fileName: "src/profile-view/update-user.jsx",
+                    lineNumber: 109,
+                    columnNumber: 9
+                }, this)
+            }, void 0, false, {
+                fileName: "src/profile-view/update-user.jsx",
+                lineNumber: 108,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Card).Footer, {
@@ -41247,7 +41251,13 @@ function UpdateUser(user) {
                     children: [
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
                             className: "label text-center headline-profile-delete",
-                            children: "Delete Account"
+                            children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h5", {
+                                children: "Delete Account"
+                            }, void 0, false, {
+                                fileName: "src/profile-view/update-user.jsx",
+                                lineNumber: 183,
+                                columnNumber: 13
+                            }, this)
                         }, void 0, false, {
                             fileName: "src/profile-view/update-user.jsx",
                             lineNumber: 182,

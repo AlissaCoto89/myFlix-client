@@ -102,12 +102,12 @@ function UpdateUser(user) {
 
   return (
     <Container className="profile-container">
+      <span className="label text-center headline-profile-update">
+        <h5>Update User Profile</h5>
+      </span>
       <Card.Body>
         <CardGroup>
           <Card bg="light" border="dark" text="dark">
-            <span className="label text-center headline-profile-update">
-              Update User Profile
-            </span>
             <Form>
               <Form.Group
                 className="profile-form-group-username"
@@ -180,7 +180,7 @@ function UpdateUser(user) {
       <Card.Footer className="text-right">
         <Card bg="light" border="dark" text="dark">
           <span className="label text-center headline-profile-delete">
-            Delete Account
+            <h5>Delete Account</h5>
           </span>
           <Button
             className="button button-profile-view-delete"
