@@ -32,10 +32,10 @@ export function ProfileView({ movies, onUpdatedUser, onBackClick }) {
     getUser();
   }, []);
 
-  const removeFavorite = (username, movieId) => {
+  const removeFavorite = (movieId) => {
     axios
       .delete(
-        `https://my-flix-db-akc.herokuapp.com/users/${username}/movies/${movieId}`,
+        `https://my-flix-db-akc.herokuapp.com/users/${currentUser}/movies/${movieId}`,
         {
           headers: { Authorization: `Bearer ${token}` },
         }
