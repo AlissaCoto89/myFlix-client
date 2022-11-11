@@ -114,7 +114,7 @@ export default class MainView extends React.Component {
                 return (
                   <Col>
                     <RegistrationView
-                      onSucessfulRegistration={() => history.push("/")}
+                      onSuccessfulRegistration={() => history.push("/")}
                     />
                   </Col>
                 );

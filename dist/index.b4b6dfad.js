@@ -27065,7 +27065,7 @@ class MainView extends (0, _reactDefault.default).Component {
                                     }, void 0, false, void 0, void 0);
                                     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Col), {
                                         children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _registrationView.RegistrationView), {
-                                            onSucessfulRegistration: ()=>history.push("/")
+                                            onSuccessfulRegistration: ()=>history.push("/")
                                         }, void 0, false, void 0, void 0)
                                     }, void 0, false, void 0, void 0);
                                 }
@@ -39666,65 +39666,62 @@ var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
 var _propTypes = require("prop-types");
 var _propTypesDefault = parcelHelpers.interopDefault(_propTypes);
-var _button = require("react-bootstrap/Button");
-var _buttonDefault = parcelHelpers.interopDefault(_button);
-var _card = require("react-bootstrap/Card");
-var _cardDefault = parcelHelpers.interopDefault(_card);
+var _reactBootstrap = require("react-bootstrap");
 var _reactRouterDom = require("react-router-dom");
 class MovieCard extends (0, _reactDefault.default).Component {
     render() {
         const { movie  } = this.props;
-        return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _cardDefault.default), {
+        return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Card), {
             children: [
-                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _cardDefault.default).Img, {
+                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Card).Img, {
                     variant: "top",
                     src: movie.ImagePath
                 }, void 0, false, {
                     fileName: "src/components/movie-card/movie-card.jsx",
-                    lineNumber: 14,
+                    lineNumber: 13,
                     columnNumber: 9
                 }, this),
-                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _cardDefault.default).Body, {
+                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Card).Body, {
                     children: [
-                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _cardDefault.default).Title, {
+                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Card).Title, {
                             children: movie.Title
+                        }, void 0, false, {
+                            fileName: "src/components/movie-card/movie-card.jsx",
+                            lineNumber: 15,
+                            columnNumber: 11
+                        }, this),
+                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Card).Text, {
+                            children: movie.Description
                         }, void 0, false, {
                             fileName: "src/components/movie-card/movie-card.jsx",
                             lineNumber: 16,
                             columnNumber: 11
                         }, this),
-                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _cardDefault.default).Text, {
-                            children: movie.Description
-                        }, void 0, false, {
-                            fileName: "src/components/movie-card/movie-card.jsx",
-                            lineNumber: 17,
-                            columnNumber: 11
-                        }, this),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Link), {
                             to: `/movies/${movie._id}`,
-                            children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _buttonDefault.default), {
-                                variant: "link",
+                            children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Button), {
+                                variant: "primary",
                                 children: "Open"
                             }, void 0, false, {
                                 fileName: "src/components/movie-card/movie-card.jsx",
-                                lineNumber: 19,
+                                lineNumber: 18,
                                 columnNumber: 13
                             }, this)
                         }, void 0, false, {
                             fileName: "src/components/movie-card/movie-card.jsx",
-                            lineNumber: 18,
+                            lineNumber: 17,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "src/components/movie-card/movie-card.jsx",
-                    lineNumber: 15,
+                    lineNumber: 14,
                     columnNumber: 9
                 }, this)
             ]
         }, void 0, true, {
             fileName: "src/components/movie-card/movie-card.jsx",
-            lineNumber: 13,
+            lineNumber: 12,
             columnNumber: 7
         }, this);
     }
@@ -39753,7 +39750,7 @@ MovieCard.propTypes = {
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","prop-types":"7wKI2","react-bootstrap/Button":"aPzUt","react-bootstrap/Card":"lAynp","react-router-dom":"cHIiW","@parcel/transformer-js/src/esmodule-helpers.js":"jCqbM","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"3Q88M"}],"ggaUx":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","prop-types":"7wKI2","react-router-dom":"cHIiW","@parcel/transformer-js/src/esmodule-helpers.js":"jCqbM","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"3Q88M","react-bootstrap":"3AD9A"}],"ggaUx":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$e9f6 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -40979,11 +40976,11 @@ var _s = $RefreshSig$();
 function UpdateUser(user) {
     _s();
     const [username, setUsername] = (0, _react.useState)("");
-    const [usernameErr] = (0, _react.useState)("");
+    const [usernameErr, setUsernameErr] = (0, _react.useState)("");
     const [password, setPassword] = (0, _react.useState)("");
-    const [passwordErr] = (0, _react.useState)("");
+    const [passwordErr, setPasswordErr] = (0, _react.useState)("");
     const [email, setEmail] = (0, _react.useState)("");
-    const [emailErr] = (0, _react.useState)("");
+    const [emailErr, setEmailErr] = (0, _react.useState)("");
     const [birthday, setBirthday] = (0, _react.useState)("");
     const [birthdayErr] = (0, _react.useState)("");
     const currentUser = localStorage.getItem("user");
@@ -40991,24 +40988,24 @@ function UpdateUser(user) {
     const validate = ()=>{
         let isReq = true;
         if (!username) {
-            setUsernameErr("Username required");
+            setUsernameErr("Username required.");
             isReq = false;
         } else if (username.length < 5) {
-            setUsernameErr("Username must be 5 or more characters");
+            setUsernameErr("Username must be 5 or more characters.");
             isReq = false;
         }
         if (!password) {
-            setPasswordErr("Password required");
+            setPasswordErr("Password required.");
             isReq = false;
         } else if (password.length < 6) {
-            setPasswordErr("Password must be 6 or more characters");
+            setPasswordErr("Password must be 6 or more characters.");
             isReq = false;
         }
         if (!email) {
-            setEmailErr("Email required");
+            setEmailErr("E-mail required.");
             isReq = false;
         } else if (email.indexOf("@") === -1) {
-            setEmailErr("Email must be a valid email address");
+            setEmailErr("E-mail must be a valid e-mail address!");
             isReq = false;
         }
         return isReq;
@@ -41154,7 +41151,7 @@ function UpdateUser(user) {
                                     controlId: "formGroupEmail",
                                     children: [
                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Label, {
-                                            children: "Email:"
+                                            children: "E-mail:"
                                         }, void 0, false, {
                                             fileName: "src/profile-view/update-user.jsx",
                                             lineNumber: 145,
@@ -41164,7 +41161,7 @@ function UpdateUser(user) {
                                             type: "email",
                                             value: email,
                                             onChange: (e)=>setEmail(e.target.value),
-                                            placeholder: "Enter your email address",
+                                            placeholder: "Enter your e-mail address",
                                             required: true
                                         }, void 0, false, {
                                             fileName: "src/profile-view/update-user.jsx",
@@ -41300,7 +41297,7 @@ function UpdateUser(user) {
         columnNumber: 5
     }, this);
 }
-_s(UpdateUser, "U5natZRmE64yAv5hO7eALy78nIE=");
+_s(UpdateUser, "J9+fTqWMg2h27N9xsA/HaCcpBEM=");
 _c = UpdateUser;
 exports.default = UpdateUser;
 var _c;

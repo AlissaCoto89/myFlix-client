@@ -4,11 +4,11 @@ import { Form, Button, Card, CardGroup, Container } from "react-bootstrap";
 
 function UpdateUser(user) {
   const [username, setUsername] = useState("");
-  const [usernameErr] = useState("");
+  const [usernameErr, setUsernameErr] = useState("");
   const [password, setPassword] = useState("");
-  const [passwordErr] = useState("");
+  const [passwordErr, setPasswordErr] = useState("");
   const [email, setEmail] = useState("");
-  const [emailErr] = useState("");
+  const [emailErr, setEmailErr] = useState("");
   const [birthday, setBirthday] = useState("");
   const [birthdayErr] = useState("");
   const currentUser = localStorage.getItem("user");
@@ -17,24 +17,24 @@ function UpdateUser(user) {
   const validate = () => {
     let isReq = true;
     if (!username) {
-      setUsernameErr("Username required");
+      setUsernameErr("Username required.");
       isReq = false;
     } else if (username.length < 5) {
-      setUsernameErr("Username must be 5 or more characters");
+      setUsernameErr("Username must be 5 or more characters.");
       isReq = false;
     }
     if (!password) {
-      setPasswordErr("Password required");
+      setPasswordErr("Password required.");
       isReq = false;
     } else if (password.length < 6) {
-      setPasswordErr("Password must be 6 or more characters");
+      setPasswordErr("Password must be 6 or more characters.");
       isReq = false;
     }
     if (!email) {
-      setEmailErr("Email required");
+      setEmailErr("E-mail required.");
       isReq = false;
     } else if (email.indexOf("@") === -1) {
-      setEmailErr("Email must be a valid email address");
+      setEmailErr("E-mail must be a valid e-mail address!");
       isReq = false;
     }
 
@@ -142,12 +142,12 @@ function UpdateUser(user) {
                 className="profile-form-group-email"
                 controlId="formGroupEmail"
               >
-                <Form.Label>Email:</Form.Label>
+                <Form.Label>E-mail:</Form.Label>
                 <Form.Control
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  placeholder="Enter your email address"
+                  placeholder="Enter your e-mail address"
                   required
                 />
                 {emailErr && <p>{emailErr}</p>}
