@@ -27202,7 +27202,11 @@ exports.default = MainView;
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
+<<<<<<< HEAD
 },{"react/jsx-dev-runtime":"iTorj","react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"jCqbM","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"3Q88M","axios":"jo6P5","react-router-dom":"cHIiW","react-bootstrap":"3AD9A","./main-view.scss":"eBaMl","../login-view/login-view":"9YtA0","../movie-card/movie-card":"bwuIu","../movie-view/movie-view":"ggaUx","../registration-view/registration-view":"3U8r7","../../director-view/director-view":"9iVNK","../../genre-view/genre-view":"aND7A","../../navbar/navbar":"hMFIc","../../profile-view/profile-view":"eUzrc"}],"jCqbM":[function(require,module,exports) {
+=======
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"jCqbM","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"3Q88M","../movie-card/movie-card":"bwuIu","../movie-view/movie-view":"ggaUx"}],"jCqbM":[function(require,module,exports) {
+>>>>>>> 5be5433711016485d97f30c37e3759a23f4cc72a
 exports.interopDefault = function(a) {
     return a && a.__esModule ? a : {
         default: a
@@ -27352,6 +27356,7 @@ function registerExportsForReactRefresh(module1) {
     }
 }
 
+<<<<<<< HEAD
 },{"react-refresh/runtime":"dzFUX"}],"jo6P5":[function(require,module,exports) {
 module.exports = require("./lib/axios");
 
@@ -39652,6 +39657,9 @@ $RefreshReg$(_c, "LoginView");
   window.$RefreshSig$ = prevRefreshSig;
 }
 },{"react/jsx-dev-runtime":"iTorj","react":"21dqq","react-bootstrap":"3AD9A","axios":"jo6P5","prop-types":"7wKI2","./login-view.scss":"e57ax","@parcel/transformer-js/src/esmodule-helpers.js":"jCqbM","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"3Q88M"}],"e57ax":[function() {},{}],"bwuIu":[function(require,module,exports) {
+=======
+},{"react-refresh/runtime":"dzFUX"}],"bwuIu":[function(require,module,exports) {
+>>>>>>> 5be5433711016485d97f30c37e3759a23f4cc72a
 var $parcel$ReactRefreshHelpers$67b2 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -39664,6 +39672,7 @@ parcelHelpers.export(exports, "MovieCard", ()=>MovieCard);
 var _jsxDevRuntime = require("react/jsx-dev-runtime");
 var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
+<<<<<<< HEAD
 var _propTypes = require("prop-types");
 var _propTypesDefault = parcelHelpers.interopDefault(_propTypes);
 var _reactBootstrap = require("react-bootstrap");
@@ -39722,10 +39731,25 @@ class MovieCard extends (0, _reactDefault.default).Component {
         }, void 0, true, {
             fileName: "src/components/movie-card/movie-card.jsx",
             lineNumber: 12,
+=======
+class MovieCard extends (0, _reactDefault.default).Component {
+    render() {
+        const { movie , onMovieClick  } = this.props;
+        return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+            className: "movie-card",
+            onClick: ()=>{
+                onMovieClick(movie);
+            },
+            children: movie.Title
+        }, void 0, false, {
+            fileName: "src/components/movie-card/movie-card.jsx",
+            lineNumber: 8,
+>>>>>>> 5be5433711016485d97f30c37e3759a23f4cc72a
             columnNumber: 7
         }, this);
     }
 }
+<<<<<<< HEAD
 MovieCard.propTypes = {
     movie: (0, _propTypesDefault.default).shape({
         Title: (0, _propTypesDefault.default).string.isRequired,
@@ -39744,13 +39768,19 @@ MovieCard.propTypes = {
     }).isRequired,
     onMovieClick: (0, _propTypesDefault.default).func
 };
+=======
+>>>>>>> 5be5433711016485d97f30c37e3759a23f4cc72a
 
   $parcel$ReactRefreshHelpers$67b2.postlude(module);
 } finally {
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
+<<<<<<< HEAD
 },{"react/jsx-dev-runtime":"iTorj","react":"21dqq","prop-types":"7wKI2","react-router-dom":"cHIiW","@parcel/transformer-js/src/esmodule-helpers.js":"jCqbM","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"3Q88M","react-bootstrap":"3AD9A"}],"ggaUx":[function(require,module,exports) {
+=======
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"jCqbM","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"3Q88M"}],"ggaUx":[function(require,module,exports) {
+>>>>>>> 5be5433711016485d97f30c37e3759a23f4cc72a
 var $parcel$ReactRefreshHelpers$e9f6 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
