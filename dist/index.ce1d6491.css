@@ -2,29 +2,86 @@
   color: #4682b4;
 }
 
+.movieCard.card {
+  border-color: #5f5763;
+}
 
+.main-nav a.navbar-brand, .main-nav .navbar-nav a.nav-link {
+  color: #fff;
+  outline: none;
+}
 
+.main-nav a.navbar-brand:active, .main-nav a.navbar-brand:focus, .main-nav .navbar-nav a.nav-link:active, .main-nav .navbar-nav a.nav-link:focus {
+  color: #047bb3;
+}
 
+.main-nav a.navbar-brand:hover, .main-nav .navbar-nav a.nav-link:hover {
+  color: #2fa1b5;
+}
 
+.navbar-logo {
+  color: #53b3ee;
+  font-size: x-large;
+  font-weight: bold;
+}
 
+.login-container {
+  color: #047bb3;
+  color: #58585d;
+}
+
+.login-card, .login-form-group {
+  border-color: #5f5763;
+}
 
 .label {
   font-weight: bold;
 }
 
-img {
-  height: 400px;
-  width: 300px;
+.movieView {
+  color: #58585d;
+}
+
+.movieView .backLink, .movieView .directorLink, .movieView .genreLink {
+  color: #047bb3;
+}
+
+.registration-container {
+  color: #58585d;
+}
+
+.registration-container .loginLink {
+  color: #047bb3;
+}
+
+.registration-card {
+  border-color: #5f5763;
+}
+
+.director-view {
+  color: #58585d;
+}
+
+.director-view .backBtn {
+  color: #047bb3;
+}
+
+.genre-view {
+  color: #58585d;
+}
+
+.genre-view .backBtn {
+  color: #047bb3;
 }
 
 
 
+.profile-view {
+  color: #58585d;
+}
 
-
-
-
-
-
-
+.profile-view .userInfo, .profile-view .updateUser, .favMovies.card {
+  border-color: #5f5763;
+}
 
 /*# sourceMappingURL=index.ce1d6491.css.map */
