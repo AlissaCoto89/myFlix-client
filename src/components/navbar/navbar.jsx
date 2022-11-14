@@ -1,6 +1,9 @@
 import React from "react";
-import { Navbar, Container, Nav, Button } from "react-bootstrap";
+import { Navbar, Container, Nav } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+
+import "./navbar.scss";
 
 export default function Navbar({ user }) {
   const onLoggedOut = () => {
@@ -23,8 +26,8 @@ export default function Navbar({ user }) {
     <Navbar
       className="main-nav"
       sticky="top"
-      bg="dark"
       expand="lg"
+      bg="dark"
       variant="dark"
     >
       <Container>

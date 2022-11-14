@@ -1,35 +1,29 @@
 import React from "react";
 import axios from "axios";
 import { connect } from "react-redux";
-import { setMovies } from "../../actions/actions";
+import { setMovies, setUser } from "../../actions/actions";
 import MoviesList from "../movies-list/movies-list";
 import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
 import { Container, Row, Col, Navbar } from "react-bootstrap";
-import Navbar from "../../navbar/navbar";
+import Navbar from "../navbar/navbar";
 import LoginView from "../login-view/login-view";
 import MovieView from "../movie-view/movie-view";
 import { RegistrationView } from "../registration-view/registration-view";
-import { DirectorView } from "../../director-view/director-view";
-import { GenreView } from "../../genre-view/genre-view";
-import { ProfileView } from "../../profile-view/profile-view";
+import { DirectorView } from "../director-view/director-view";
+import { GenreView } from "../genre-view/genre-view";
+import { ProfileView } from "../profile-view/profile-view";
 import "./main-view.scss";
 
 class MainView extends React.Component {
   constructor() {
     super();
-    this.state = {
-      selectedMovie: null,
-      user: null,
-      isRegistering: false,
-    };
   }
 
   componentDidMount() {
     let accessToken = localStorage.getItem("token");
     if (accessToken !== null) {
-      this.setState({
-        user: localStorage.getItem("user"),
-      });
+      console.log("called setUser");
+      this.props.setUser(localStorage.getItem("user"));
       this.getMovies(accessToken);
     }
   }
@@ -47,10 +41,7 @@ class MainView extends React.Component {
   }
 
   onLoggedIn(authData) {
-    this.setState({
-      user: authData.user.Username,
-    });
-
+    this.props.setUser(authData.user.Username);
     localStorage.setItem("token", authData.token);
     localStorage.setItem("user", authData.user.Username);
     this.getMovies(authData.token);
@@ -72,15 +63,12 @@ class MainView extends React.Component {
   onLoggedOut() {
     localStorage.removeItem("token");
     localStorage.removeItem("user");
-    this.setState({
-      selectedMovie: null,
-      user: null,
-    });
+    this.props.setUser(null);
   }
 
   render() {
-    let { movies } = this.props;
-    let { user } = this.state;
+    const { movies, user } = this.props;
+    console.log(user);
     return (
       <Router>
         <Navbar user={user} onLogOut={() => this.onLoggedOut()} />
@@ -212,7 +200,7 @@ class MainView extends React.Component {
 }
 
 let mapStateToProps = (state) => {
-  return { movies: state.movies };
+  return { movies: state.movies, user: state.user };
 };
 
-export default connect(mapStateToProps, { setMovies })(MainView);
+export default connect(mapStateToProps, { setMovies, setUser })(MainView);

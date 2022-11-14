@@ -3,6 +3,7 @@ import axios from "axios";
 import PropTypes from "prop-types";
 import { CardGroup, Button, Card, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
 import "./movie-view.scss";
 
 export default function MovieView({ movie, onBackClick }) {
@@ -58,24 +59,26 @@ export default function MovieView({ movie, onBackClick }) {
   }, []);
 
   return (
-    <Card bg="light" text="dark">
+    <Card className="movieView">
       <Card.Header className="text-center" as="h5">
         {movie.Title}
       </Card.Header>
       <Card.Body>
         <CardGroup>
           <Card bg="light" border="dark" text="dark">
-            <Card.Img className="movie-poster" as="img" src={movie.ImagePath} />
+            <div className="moviePoster">
+              <img src={movie.ImagePath} />
+            </div>
             <Card bg="light" border="dark" text="dark">
               <Card.Body className="movie-textarea">
                 <span className="movie-description">{movie.Description}</span>
-                <div className="movie-director-link">
+                <div className="directorLink">
                   <span className="label">Director Information: </span>
                   <Link to={`/directors/${movie.Director.Name}`}>
                     <Button variant="link">Director</Button>
                   </Link>
                 </div>
-                <div className="movie-genre-link">
+                <div className="genreLink">
                   <span className="label">Genre Information: </span>
                   <Link to={`/genres/${movie.Genre.Name}`}>
                     <Button variant="link">Genre</Button>
@@ -97,7 +100,7 @@ export default function MovieView({ movie, onBackClick }) {
             </Button>
           ) : (
             <Button
-              variant="primary"
+              variant="success"
               onClick={() => addFavorite(currentUser, movie._id)}
             >
               Add Movie to Favorites
@@ -106,7 +109,7 @@ export default function MovieView({ movie, onBackClick }) {
         </Row>
         <Row className="mx-1">
           <Button
-            className="button-movie-view"
+            className="backBtn"
             variant="secondary"
             onClick={() => {
               onBackClick();

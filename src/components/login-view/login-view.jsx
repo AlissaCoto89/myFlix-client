@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { Container, Card, Form, Button } from "react-bootstrap";
 import axios from "axios";
 import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 import "./login-view.scss";
 
 export default function LoginView(props) {
@@ -52,16 +54,13 @@ export default function LoginView(props) {
 
   return (
     <Container className="login-container">
-      <Card bg="light" text="dark" className="login-card">
+      <Card className="login-card">
         <Card.Header className="text-center" as="h5">
           Login
         </Card.Header>
         <Card.Body>
           <Form>
-            <Form.Group
-              className="login-form-group-username"
-              controlId="formUsername"
-            >
+            <Form.Group className="login-form-group" controlId="formUsername">
               <Form.Label>Username:</Form.Label>
               <Form.Control
                 type="text"
@@ -94,6 +93,9 @@ export default function LoginView(props) {
             >
               Log in
             </Button>
+            <Link to="/register" className="registerLink">
+              Register
+            </Link>
           </Form>
         </Card.Body>
       </Card>

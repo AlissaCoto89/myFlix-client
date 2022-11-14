@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { connect } from "react-redux";
 import { Button, Col, Container, Row } from "react-bootstrap";
 
 import "./director-view.scss";
@@ -9,13 +10,13 @@ export class DirectorView extends React.Component {
     const { director, onBackClick } = this.props;
 
     return (
-      <Container className="director-view">
+      <Container className="directorView">
         <Button
-          className="d-block backBtn"
+          className="backBtn"
           onClick={() => {
             onBackClick(null);
           }}
-          variant="link"
+          variant="secondary"
         >
           Back
         </Button>
