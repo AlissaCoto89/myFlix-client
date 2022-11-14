@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Button, Card, Container, Row, Col } from "react-bootstrap";
-import { connect } from "react-redux";
 import UserInfo from "./user-info";
 import FavoriteMovies from "./favorite-movies";
 import UpdateUser from "./update-user";
@@ -61,21 +60,21 @@ export function ProfileView({ movies, onUpdatedUser, onBackClick }) {
             onClick={() => {
               onBackClick(null);
             }}
-            variant="secondary"
+            variant="info"
           >
             Back
           </Button>
 
           <Row>
             <Col md={12} lg={4}>
-              <Card className="mb-3">
+              <Card className="mb-3 userInfo">
                 <Card.Body>
                   <UserInfo name={user?.Username} email={user?.Email} />
                 </Card.Body>
               </Card>
             </Col>
             <Col md={12} lg={8}>
-              <Card className="mb-3">
+              <Card className="mb-3 updateUser">
                 <Card.Body>
                   <UpdateUser user={user} handleSubmit={onUpdatedUser} />
                 </Card.Body>
@@ -84,7 +83,7 @@ export function ProfileView({ movies, onUpdatedUser, onBackClick }) {
           </Row>
           <Row>
             <Col lg={12}>
-              <Card className="mb-4">
+              <Card className="mb-3 favMovies">
                 <Card.Body>
                   <FavoriteMovies
                     favoriteMovieList={favoriteMovies}

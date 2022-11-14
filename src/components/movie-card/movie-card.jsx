@@ -1,7 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { Button, Card } from "react-bootstrap";
-import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import "./movie-card.scss";
 
@@ -12,9 +11,11 @@ export class MovieCard extends React.Component {
     return (
       <Card className="movieCard">
         <Card.Img variant="top" src={movie.ImagePath} />
-        <Card.Body>
-          <Card.Title>{movie.Title}</Card.Title>
-          <Card.Text>{movie.Description}</Card.Text>
+        <Card.Body className="d-flex flex-column justify-content-between">
+          <div className="mb-1">
+            <Card.Title>{movie.Title}</Card.Title>
+            <Card.Text>{movie.Description}</Card.Text>
+          </div>
           <Link to={`/movies/${movie._id}`}>
             <Button className="openBtn" variant="primary">
               Open

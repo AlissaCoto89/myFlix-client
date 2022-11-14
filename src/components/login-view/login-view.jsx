@@ -87,22 +87,15 @@ export default function LoginView(props) {
 
             <Button
               className="button-login-view"
-              variant="secondary"
+              variant="info"
               type="submit"
               onClick={handleSubmit}
             >
               Log in
             </Button>
-            <Link to="/register" className="registerLink">
-              Register
-            </Link>
           </Form>
         </Card.Body>
       </Card>
     </Container>
   );
 }
-
-LoginView.propTypes = {
-  onLoggedIn: PropTypes.func.isRequired,
-};

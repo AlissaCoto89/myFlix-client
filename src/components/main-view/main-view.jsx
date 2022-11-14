@@ -28,18 +28,6 @@ class MainView extends React.Component {
     }
   }
 
-  setSelectedMovie(newSelectedMovie) {
-    this.setState({
-      selectedMovie: newSelectedMovie,
-    });
-  }
-
-  setIsRegistering(status) {
-    this.setState({
-      isRegistering: status,
-    });
-  }
-
   onLoggedIn(authData) {
     this.props.setUser(authData.user.Username);
     localStorage.setItem("token", authData.token);
@@ -56,7 +44,7 @@ class MainView extends React.Component {
         this.props.setMovies(response.data);
       })
       .catch((error) => {
-        console.log(error);
+        console.error(error);
       });
   }
 

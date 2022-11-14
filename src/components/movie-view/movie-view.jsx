@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import PropTypes from "prop-types";
 import { CardGroup, Button, Card, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import { connect } from "react-redux";
 import "./movie-view.scss";
 
 export default function MovieView({ movie, onBackClick }) {
@@ -65,9 +63,9 @@ export default function MovieView({ movie, onBackClick }) {
       </Card.Header>
       <Card.Body>
         <CardGroup>
-          <Card bg="light" border="dark" text="dark">
+          <Card bg="light" text="dark">
             <div className="moviePoster">
-              <img src={movie.ImagePath} />
+              <img width="250" src={movie.ImagePath} />
             </div>
             <Card bg="light" border="dark" text="dark">
               <Card.Body className="movie-textarea">
@@ -110,7 +108,7 @@ export default function MovieView({ movie, onBackClick }) {
         <Row className="mx-1">
           <Button
             className="backBtn"
-            variant="secondary"
+            variant="info"
             onClick={() => {
               onBackClick();
             }}
@@ -122,23 +120,3 @@ export default function MovieView({ movie, onBackClick }) {
     </Card>
   );
 }
-
-MovieView.propTypes = {
-  movie: PropTypes.shape({
-    Title: PropTypes.string.isRequired,
-    Description: PropTypes.string.isRequired,
-    ImagePath: PropTypes.string.isRequired,
-    Genre: PropTypes.shape({
-      Name: PropTypes.string.isRequired,
-      Description: PropTypes.string.isRequired,
-    }).isRequired,
-    Actors: PropTypes.array.isRequired,
-    Director: PropTypes.shape({
-      Name: PropTypes.string.isRequired,
-      Bio: PropTypes.string.isRequired,
-      Birth: PropTypes.string,
-      Death: PropTypes.string,
-    }).isRequired,
-  }).isRequired,
-  onBackClick: PropTypes.func.isRequired,
-};

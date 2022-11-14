@@ -1,7 +1,6 @@
 import React from "react";
 import Col from "react-bootstrap/Col";
 import { connect } from "react-redux";
-
 import VisibilityFilterInput from "../visibility-filter-input/visibility-filter-input";
 import { MovieCard } from "../movie-card/movie-card";
 
@@ -33,7 +32,7 @@ function MoviesList(props) {
         <VisibilityFilterInput visibilityFilter={visibilityFilter} />
       </Col>
       {filteredMovies.map((m) => (
-        <Col className="mb-3" md={3} key={m._id}>
+        <Col className="mb-3 d-flex" md={3} key={m._id}>
           <MovieCard movie={m} />
         </Col>
       ))}

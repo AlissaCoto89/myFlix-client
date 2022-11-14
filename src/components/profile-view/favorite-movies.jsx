@@ -8,14 +8,20 @@ function FavoriteMovies({ favoriteMovieList, onRemoveFavorite }) {
     <Card className="favMovies">
       <Card.Body>
         <Row>
-          <Col>
+          <Col className="text-center">
             <h5>Favorite Movies</h5>
           </Col>
         </Row>
         <Row>
           {favoriteMovieList.map(({ ImagePath, Title, _id }) => {
             return (
-              <Col sm={12} md={6} lg={4} className="mt-3" key={`fav-${_id}`}>
+              <Col
+                sm={12}
+                md={6}
+                lg={4}
+                className="fav-movie"
+                key={`fav-${_id}`}
+              >
                 <Figure>
                   <Link to={`/movies/${_id}`}>
                     <Figure.Image src={ImagePath} alt={Title} />
