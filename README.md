@@ -47,4 +47,4 @@ Returns data about a director (name, bio, birth year, death year)
 
 
 
-Technologies used: JavaScript, React, React Bootstrap
+Technologies used: JavaScript, React, React Bootstrap, React Redux
