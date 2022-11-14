@@ -1,0 +1,11 @@
+@import "./styles.scss";
+
+body {
+  background-color: $backgroundColor ;
+  color: $color;
+}
+
+.card-body {
+  background-color: $backgroundColorCard;
+  color: $color;
+}

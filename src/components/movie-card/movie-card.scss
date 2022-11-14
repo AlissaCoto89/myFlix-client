@@ -1,0 +1,8 @@
+@import "../../styles/styles";
+
+.movieCard {
+    &.card {
+        border-color: $borderColorCard;
+    }    
+
+}
