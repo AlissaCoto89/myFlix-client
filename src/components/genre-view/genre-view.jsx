@@ -1,6 +1,5 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { connect } from "react-redux";
 import { Button, Col, Container, Row } from "react-bootstrap";
 
 import "./genre-view.scss";
@@ -16,7 +15,7 @@ export class GenreView extends React.Component {
           onClick={() => {
             onBackClick(null);
           }}
-          variant="secondary"
+          variant="link"
         >
           Back
         </Button>

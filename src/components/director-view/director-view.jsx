@@ -16,7 +16,7 @@ export class DirectorView extends React.Component {
           onClick={() => {
             onBackClick(null);
           }}
-          variant="secondary"
+          variant="link"
         >
           Back
         </Button>
