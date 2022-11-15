@@ -168,7 +168,7 @@ function UpdateUser(user) {
               </Form.Group>
               <Button
                 className="button-profile-view-update"
-                variant="secondary"
+                variant="primary"
                 type="submit"
                 onClick={handleUpdate}
               >

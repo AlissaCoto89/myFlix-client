@@ -60,7 +60,7 @@ export function ProfileView({ movies, onUpdatedUser, onBackClick }) {
             onClick={() => {
               onBackClick(null);
             }}
-            variant="info"
+            variant="link"
           >
             Back
           </Button>

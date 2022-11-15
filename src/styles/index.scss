@@ -1,7 +1,7 @@
-@import "./styles.scss";
+@import "./styles";
 
-body {
-  background-color: $backgroundColor ;
+.app-container {
+  background-color: $backgroundColor; 
   color: $color;
 }
 
