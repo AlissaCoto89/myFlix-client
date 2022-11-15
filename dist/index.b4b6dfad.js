@@ -43340,7 +43340,7 @@ function FavoriteMovies({ favoriteMovieList , onRemoveFavorite  }) {
                         return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Col), {
                             sm: 12,
                             md: 6,
-                            lg: 4,
+                            lg: 3,
                             className: "fav-movie",
                             children: [
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Figure), {

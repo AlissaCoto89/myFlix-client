@@ -18,7 +18,7 @@ function FavoriteMovies({ favoriteMovieList, onRemoveFavorite }) {
               <Col
                 sm={12}
                 md={6}
-                lg={4}
+                lg={3}
                 className="fav-movie"
                 key={`fav-${_id}`}
               >
