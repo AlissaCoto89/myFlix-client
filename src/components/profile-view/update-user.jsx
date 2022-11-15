@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Form, Button, Card, CardGroup, Container } from "react-bootstrap";
+import "./profile-view.scss";
 
 function UpdateUser(user) {
   const [username, setUsername] = useState("");

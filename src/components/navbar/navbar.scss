@@ -1,0 +1,22 @@
+@import "../../styles/styles";
+
+.main-nav {
+  a.navbar-brand,
+  .navbar-nav a.nav-link {
+    color: #ffffff;
+    outline: none;
+    &:active,
+    &:focus {
+      color: $linkColor;
+    }
+    &:hover {
+      color: $hoverLinkColor;
+    }
+  }
+}
+
+.navbar-logo {
+  font-size: x-large;
+  font-weight: bold;
+  color: rgb(83, 179, 238);
+}

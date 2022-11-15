@@ -1,8 +1,18 @@
+@import "../../styles/styles";
+
 .label {
-    font-weight: bold;
-  }
+  font-weight: bold;
+}
 
 img {
-  height: 400px;
   width: 300px;
+  height: 450px;
+}
+
+.movieView {
+  .backLink,
+  .directorLink,
+  .genreLink {
+    color: $color;
+  }
 }

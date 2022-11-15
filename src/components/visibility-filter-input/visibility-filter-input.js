@@ -1,0 +1,18 @@
+import React from "react";
+import { connect } from "react-redux";
+
+import Form from "react-bootstrap/Form";
+
+import { setFilter } from "../../actions/actions";
+
+function VisibilityFilterInput(props) {
+  return (
+    <Form.Control
+      onChange={(e) => props.setFilter(e.target.value)}
+      value={props.visibilityFilter}
+      placeholder="Filter movies by Title, Director, or Genre"
+    />
+  );
+}
+
+export default connect(null, { setFilter })(VisibilityFilterInput);

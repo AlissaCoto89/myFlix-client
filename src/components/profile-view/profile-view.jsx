@@ -52,29 +52,29 @@ export function ProfileView({ movies, onUpdatedUser, onBackClick }) {
       .catch((error) => console.error(error));
   };
   return (
-    <Container>
+    <Container className="profile-view">
       {user && (
         <>
           <Button
-            className="mb-2 px-0"
+            className="backBtn"
             onClick={() => {
               onBackClick(null);
             }}
-            variant="link"
+            variant="info"
           >
             Back
           </Button>
 
           <Row>
             <Col md={12} lg={4}>
-              <Card className="mb-3">
+              <Card className="mb-3 userInfo">
                 <Card.Body>
                   <UserInfo name={user?.Username} email={user?.Email} />
                 </Card.Body>
               </Card>
             </Col>
             <Col md={12} lg={8}>
-              <Card className="mb-3">
+              <Card className="mb-3 updateUser">
                 <Card.Body>
                   <UpdateUser user={user} handleSubmit={onUpdatedUser} />
                 </Card.Body>
@@ -82,8 +82,8 @@ export function ProfileView({ movies, onUpdatedUser, onBackClick }) {
             </Col>
           </Row>
           <Row>
-            <Col>
-              <Card className="mb-4">
+            <Col lg={12}>
+              <Card className="mb-3 favMovies">
                 <Card.Body>
                   <FavoriteMovies
                     favoriteMovieList={favoriteMovies}
