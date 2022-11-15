@@ -1,7 +1,7 @@
-![MyFlixLoginPage](https://user-images.githubusercontent.com/109038162/201962442-53a533ee-d3fa-4888-8a84-fd3ce3158177.png)
-![MyFlixRegistrationPage](https://user-images.githubusercontent.com/109038162/201962477-d70ff0e6-09af-4321-970f-035964843ed3.png)
-![MyFlixMoviesPage](https://user-images.githubusercontent.com/109038162/201962498-f4010984-010a-43b5-82f9-7dfb93ccdd28.png)
-![MyFlixProfilePage](https://user-images.githubusercontent.com/109038162/201962520-4c4c2493-56a2-45af-87de-391d0d86b423.png)
+![MyFlixLoginPage](https://user-images.githubusercontent.com/109038162/201966435-4a0bf88f-ef59-45f0-b148-e9dc24bcdddc.png)
+![MyFlixMoviesPage](https://user-images.githubusercontent.com/109038162/201966437-a4783831-56b4-4526-93e9-982f62b55704.png)
+![MyFlixProfilePage](https://user-images.githubusercontent.com/109038162/201966444-95cfab90-a826-4a36-bb6c-3648af58b759.png)
+![MyFlixRegistrationPage](https://user-images.githubusercontent.com/109038162/201966448-101eca86-e9eb-4260-944f-4e589a31e27a.png)
 # myFlix-client
 
 The client-side for an application named myFlix based on its existing server-side code (REST API and database).
