@@ -30,7 +30,7 @@ export default function Navbar({ user }) {
     >
       <Container>
         <Navbar.Brand className="navbar-logo" as={Link} to="/">
-          MyFlix
+          myFlix
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
