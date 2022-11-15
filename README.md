@@ -4,7 +4,7 @@
 ![MyFlixLoginPage](https://user-images.githubusercontent.com/109038162/202031673-3903238d-e672-45ae-9f98-d3eb04e91d3d.png)
 # myFlix-client
 
-The client-side for an application named myFlix based on its existing server-side code (REST API and database).
+The client-side for an application myFlix, to display data from the server-side myFlix API (REST API and database).
 
 Key features:
 
