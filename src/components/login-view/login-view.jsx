@@ -1,12 +1,10 @@
 import React, { useState } from "react";
 import { Container, Card, Form, Button } from "react-bootstrap";
 import axios from "axios";
-import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { Link } from "react-router-dom";
 import "./login-view.scss";
 
-export default function LoginView(props) {
+export function LoginView(props) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [usernameErr, setUsernameErr] = useState("");
@@ -99,3 +97,9 @@ export default function LoginView(props) {
     </Container>
   );
 }
+
+const mapDispatchToProps = (dispatch) => ({
+  handleSubmit: (event) => dispatch(handleSubmit(event)),
+});
+
+export default connect(null, mapDispatchToProps)(LoginView);

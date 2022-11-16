@@ -1,5 +1,5 @@
 import React from "react";
-import PropTypes from "prop-types";
+import { connect } from "react-redux";
 import { Button, Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import "./movie-card.scss";
@@ -27,21 +27,11 @@ export class MovieCard extends React.Component {
   }
 }
 
-MovieCard.propTypes = {
-  movie: PropTypes.shape({
-    Title: PropTypes.string.isRequired,
-    Description: PropTypes.string.isRequired,
-    ImagePath: PropTypes.string.isRequired,
-    Genre: PropTypes.shape({
-      Name: PropTypes.string.isRequired,
-      Description: PropTypes.string.isRequired,
-    }),
-    Director: PropTypes.shape({
-      Name: PropTypes.string.isRequired,
-      Bio: PropTypes.string.isRequired,
-      Birth: PropTypes.string,
-      Death: PropTypes.string,
-    }),
-  }).isRequired,
-  onMovieClick: PropTypes.func,
+const mapStateToProps = (state) => {
+  return {
+    movies: state.movies,
+    user: state.user,
+  };
 };
+
+export default connect(mapStateToProps)(MovieCard);

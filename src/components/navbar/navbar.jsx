@@ -1,9 +1,10 @@
 import React from "react";
 import { Navbar, Container, Nav } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
 import "./navbar.scss";
 
-export default function Navbar({ user }) {
+export function Navbar({ user }) {
   const onLoggedOut = () => {
     localStorage.clear();
     window.open("/", "_self");
@@ -61,3 +62,12 @@ export default function Navbar({ user }) {
     </Navbar>
   );
 }
+
+let mapStateToProps = (state) => {
+  return {
+    user: state.user,
+    movies: state.movies,
+  };
+};
+
+export default connect(mapStateToProps)(Navbar);

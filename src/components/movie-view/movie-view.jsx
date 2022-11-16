@@ -2,9 +2,10 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { CardGroup, Button, Card, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
 import "./movie-view.scss";
 
-export default function MovieView({ movie, onBackClick }) {
+export function MovieView({ movie, onBackClick }) {
   const [favoriteMovies, setFavoriteMovies] = useState([]);
   const currentUser = localStorage.getItem("user");
   const token = localStorage.getItem("token");
@@ -120,3 +121,12 @@ export default function MovieView({ movie, onBackClick }) {
     </Card>
   );
 }
+
+const mapStateToProps = (state) => {
+  return {
+    movies: state.movies,
+    user: state.user,
+  };
+};
+
+export default connect(mapStateToProps)(MovieView);

@@ -1,7 +1,6 @@
 import React from "react";
-import PropTypes from "prop-types";
 import { Button, Col, Card, Container, Row } from "react-bootstrap";
-
+import { connect } from "react-redux";
 import "./director-view.scss";
 
 export class DirectorView extends React.Component {
@@ -10,7 +9,7 @@ export class DirectorView extends React.Component {
 
     return (
       <Container className="directorView">
-        <Card className="director-view">
+        <Card bg="light" border="dark" text="dark" className="director-view">
           <Row>
             <Col sm={3} className="label">
               Director:{" "}
@@ -52,11 +51,11 @@ export class DirectorView extends React.Component {
   }
 }
 
-DirectorView.propTypes = {
-  director: PropTypes.shape({
-    Name: PropTypes.string.isRequired,
-    Bio: PropTypes.string.isRequired,
-    Birth: PropTypes.string,
-    Death: PropTypes.string,
-  }).isRequired,
+const mapStateToProps = (state) => {
+  return {
+    movies: state.movies,
+    user: state.user,
+  };
 };
+
+export default connect(mapStateToProps)(DirectorView);

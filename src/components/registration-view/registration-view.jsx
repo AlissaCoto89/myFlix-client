@@ -3,6 +3,7 @@ import axios from "axios";
 import { Container, Card, Button, Form } from "react-bootstrap";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
 import "./registration-view.scss";
 
 export function RegistrationView(props) {
@@ -137,10 +138,8 @@ export function RegistrationView(props) {
   );
 }
 
-RegistrationView.propTypes = {
-  register: PropTypes.shape({
-    Username: PropTypes.string.isRequired,
-    Password: PropTypes.string.isRequired,
-    Email: PropTypes.string.isRequired,
-  }),
-};
+const mapDispatchToProps = (dispatch) => ({
+  handleSubmit: (event) => dispatch(handleSubmit(event)),
+});
+
+export default connect(null, mapDispatchToProps)(RegistrationView);

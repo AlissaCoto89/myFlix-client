@@ -1,5 +1,5 @@
 import React from "react";
-import PropTypes from "prop-types";
+import { connect } from "react-redux";
 import { Button, Col, Card, Container, Row } from "react-bootstrap";
 
 import "./genre-view.scss";
@@ -10,7 +10,7 @@ export class GenreView extends React.Component {
 
     return (
       <Container className="genreView">
-        <Card className="genre-card">
+        <Card bg="light" border="dark" text="dark" className="genre-card">
           <Row>
             <Col sm={3} className="label">
               Genre:{" "}
@@ -40,9 +40,11 @@ export class GenreView extends React.Component {
   }
 }
 
-GenreView.propTypes = {
-  genre: PropTypes.shape({
-    Name: PropTypes.string.isRequired,
-    Description: PropTypes.string.isRequired,
-  }).isRequired,
+const mapStateToProps = (state) => {
+  return {
+    movies: state.movies,
+    user: state.user,
+  };
 };
+
+export default connect(mapStateToProps)(GenreView);

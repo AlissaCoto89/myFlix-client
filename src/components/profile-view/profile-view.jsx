@@ -4,6 +4,8 @@ import { Button, Card, Container, Row, Col } from "react-bootstrap";
 import UserInfo from "./user-info";
 import FavoriteMovies from "./favorite-movies";
 import UpdateUser from "./update-user";
+import { connect } from "react-redux";
+import { setFavorite, deleteFavorite } from "../../actions/actions";
 import "../profile-view/profile-view.scss";
 
 export function ProfileView({ movies, onUpdatedUser, onBackClick }) {
@@ -98,3 +100,14 @@ export function ProfileView({ movies, onUpdatedUser, onBackClick }) {
     </Container>
   );
 }
+
+const mapStateToProps = (state) => {
+  return {
+    movies: state.movies,
+    user: state.user,
+  };
+};
+
+export default connect(mapStateToProps, { setFavorite, deleteFavorite })(
+  ProfileView
+);

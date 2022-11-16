@@ -1,11 +1,16 @@
 import React from "react";
 import axios from "axios";
 import { connect } from "react-redux";
-import { setMovies, setUser } from "../../actions/actions";
+import {
+  setMovies,
+  setUser,
+  setFavorite,
+  deleteFavorite,
+} from "../../actions/actions";
 import MoviesList from "../movies-list/movies-list";
 import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
 import { Container, Row, Col, Navbar } from "react-bootstrap";
-import Navbar from "../navbar/navbar";
+import { Navbar } from "../navbar/navbar";
 import LoginView from "../login-view/login-view";
 import MovieView from "../movie-view/movie-view";
 import { RegistrationView } from "../registration-view/registration-view";
@@ -103,6 +108,7 @@ class MainView extends React.Component {
                 return (
                   <Col>
                     <ProfileView
+                      user={user}
                       movies={movies}
                       onBackClick={() => history.goBack()}
                       onDeletedUser={() => this.onLoggedOut()}
@@ -125,6 +131,7 @@ class MainView extends React.Component {
                 return (
                   <Col md={4}>
                     <MovieView
+                      user={user}
                       movie={movies.find((m) => m._id === match.params.movieId)}
                       onBackClick={() => history.goBack()}
                     />
@@ -191,4 +198,9 @@ let mapStateToProps = (state) => {
   return { movies: state.movies, user: state.user };
 };
 
-export default connect(mapStateToProps, { setMovies, setUser })(MainView);
+export default connect(mapStateToProps, {
+  setMovies,
+  setUser,
+  setFavorite,
+  deleteFavorite,
+})(MainView);

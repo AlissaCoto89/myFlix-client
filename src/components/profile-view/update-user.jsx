@@ -1,6 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import axios from "axios";
 import { Form, Button, Card, CardGroup, Container } from "react-bootstrap";
+import { connect } from "react-redux";
+import { setUser, updateUser, deleteUser } from "../../actions/actions";
 import "./profile-view.scss";
 
 function UpdateUser(user) {
@@ -197,4 +199,15 @@ function UpdateUser(user) {
   );
 }
 
-export default UpdateUser;
+const mapStateToProps = (state) => {
+  return {
+    movies: state.movies,
+    user: state.user,
+  };
+};
+
+export default connect(mapStateToProps, {
+  updateUser,
+  setUser,
+  deleteUser,
+})(UpdateUser);
