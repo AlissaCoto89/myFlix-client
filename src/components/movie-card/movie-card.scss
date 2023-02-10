@@ -4,5 +4,17 @@
     &.card {
         border-color: $borderColorCard;
     }    
-
+    .openBtn {
+        color: $buttonColor;
+        background-color: $hoverLinkColor;
+        border: #ffffff;
+    outline: "none";
+    &:active,
+    &:focus {
+      color: $linkColor;
+    }
+    &:hover {
+      color: #ffffff;
+    }
+    }
 }

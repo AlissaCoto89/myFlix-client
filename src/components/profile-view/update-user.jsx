@@ -104,98 +104,56 @@ function UpdateUser(user) {
   };
 
   return (
-    <Container className="profile-container">
-      <span className="label text-center headline-profile-update">
-        <h5>Update User Profile</h5>
-      </span>
-      <Card.Body>
-        <CardGroup>
-          <Card bg="light" border="dark" text="dark">
-            <Form>
-              <Form.Group
-                className="profile-form-group-username"
-                controlId="formGroupUsername"
-              >
-                <Form.Label>Username:</Form.Label>
-                <Form.Control
-                  type="text"
-                  value={username}
-                  onChange={(e) => setUsername(e.target.value)}
-                  placeholder="Enter your new username"
-                  required
-                />
-                {usernameErr && <p>{usernameErr}</p>}
-              </Form.Group>
-              <Form.Group
-                className="profile-form-group-password"
-                controlId="formGroupPassword"
-              >
-                <Form.Label>Password:</Form.Label>
-                <Form.Control
-                  type="password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  placeholder="Enter your new password"
-                  minLength="6"
-                  required
-                />
-                {passwordErr && <p>{passwordErr}</p>}
-              </Form.Group>
-              <Form.Group
-                className="profile-form-group-email"
-                controlId="formGroupEmail"
-              >
-                <Form.Label>E-mail:</Form.Label>
-                <Form.Control
-                  type="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  placeholder="Enter your e-mail address"
-                  required
-                />
-                {emailErr && <p>{emailErr}</p>}
-              </Form.Group>
-              <Form.Group
-                className="profile-form-group-birthday"
-                controlId="formGroupBirthday"
-              >
-                <Form.Label>Birthday:</Form.Label>
-                <Form.Control
-                  type="date"
-                  value={birthday}
-                  onChange={(e) => setBirthday(e.target.value)}
-                  placeholder="Enter your birthday"
-                />
-                {birthdayErr && <p>{birthdayErr}</p>}
-              </Form.Group>
-              <Button
-                className="button-profile-view-update"
-                variant="primary"
-                type="submit"
-                onClick={handleUpdate}
-              >
-                Update
-              </Button>
-            </Form>
-          </Card>
-        </CardGroup>
-      </Card.Body>
-      <Card.Footer className="text-right">
-        <Card bg="light" border="dark" text="dark">
-          <span className="label text-center headline-profile-delete">
-            <h5>Delete Account</h5>
-          </span>
-          <Button
-            className="button button-profile-view-delete"
-            variant="danger"
-            type="submit"
-            onClick={handleDelete}
-          >
-            DELETE MyFlix ACCOUNT
-          </Button>
-        </Card>
-      </Card.Footer>
-    </Container>
+    <>
+      <h4>Update User Profile</h4>
+
+      <Form>
+        <Form.Group>
+          <Form.Label>Username:</Form.Label>
+          <Form.Control
+            type="text"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+            placeholder="Enter your new username"
+            required
+          />
+          {usernameErr && <p>{usernameErr}</p>}
+        </Form.Group>
+
+        <Form.Group>
+          <Form.Label>Password:</Form.Label>
+          <Form.Control
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            placeholder="Enter your new password"
+            minLength="6"
+            required
+          />
+          {passwordErr && <p>{passwordErr}</p>}
+        </Form.Group>
+        <Form.Group>
+          <Form.Label>E-mail:</Form.Label>
+          <Form.Control
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            placeholder="Enter your e-mail address"
+            required
+          />
+          {emailErr && <p>{emailErr}</p>}
+        </Form.Group>
+
+        <Button
+          className="mt-2"
+          variant="info"
+          type="submit"
+          onClick={handleUpdate}
+        >
+          Update
+        </Button>
+      </Form>
+    </>
   );
 }
 

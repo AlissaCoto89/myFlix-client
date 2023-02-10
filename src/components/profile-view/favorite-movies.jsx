@@ -1,15 +1,16 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
 import { Col, Row, Figure, Button, Card } from "react-bootstrap";
 import "./profile-view.scss";
 
 function FavoriteMovies({ favoriteMovieList, onRemoveFavorite }) {
   return (
-    <Card className="favMovies">
+    <Card style={{ marginBottom: 350 }} className="favMovies">
       <Card.Body>
         <Row>
           <Col className="text-center">
-            <h5>Favorite Movies</h5>
+            <h4>Favorite Movies</h4>
           </Col>
         </Row>
         <Row>
@@ -28,8 +29,8 @@ function FavoriteMovies({ favoriteMovieList, onRemoveFavorite }) {
                     <Figure.Caption>{Title}</Figure.Caption>
                   </Link>
                 </Figure>
-                <Button variant="danger" onClick={() => onRemoveFavorite(_id)}>
-                  Remove from Favorite Movies
+                <Button variant="warning" onClick={() => onRemoveFavorite(_id)}>
+                  Remove
                 </Button>
               </Col>
             );

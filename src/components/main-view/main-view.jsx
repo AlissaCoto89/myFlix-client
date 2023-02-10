@@ -8,7 +8,12 @@ import {
   deleteFavorite,
 } from "../../actions/actions";
 import MoviesList from "../movies-list/movies-list";
-import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Route,
+  Link,
+  Redirect,
+} from "react-router-dom";
 import { Container, Row, Col, Navbar } from "react-bootstrap";
 import { Navbar } from "../navbar/navbar";
 import LoginView from "../login-view/login-view";
@@ -123,13 +128,15 @@ class MainView extends React.Component {
             <Route
               path="/movies/:movieId"
               render={({ match, history }) => {
-                if (!user) return;
-                <Col md={4}>
-                  <LoginView onLoggedIn={(user) => this.onLoggedIn(user)} />
-                </Col>;
+                if (!user)
+                  return (
+                    <Col md={4}>
+                      <LoginView onLoggedIn={(user) => this.onLoggedIn(user)} />
+                    </Col>
+                  );
                 if (movies.length === 0) return <div className="main-view" />;
                 return (
-                  <Col md={4}>
+                  <Col md={8} className="movie-view">
                     <MovieView
                       user={user}
                       movie={movies.find((m) => m._id === match.params.movieId)}

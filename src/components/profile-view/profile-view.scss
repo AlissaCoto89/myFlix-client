@@ -1,5 +1,24 @@
 @import "../../styles/styles";
 
+profile-view {
+  .userInfo {
+      border-color: $borderColorCard;
+  }    
+  .updateUser {
+      border-color: $borderColorCard;
+  }    
+  .backBtn {
+  color: $linkColor;
+  }
+  color: $color;
+}
+
+.favMovies { 
+  &.card {
+      border-color: $borderColorCard;
+  }
+}
+
 .fav-movie {
   margin-bottom: 15px;
   figure {
@@ -25,15 +44,3 @@
   }
 }
 
-.profile-view {
-  .userInfo {
-    border-color: $borderColorCard;
-  }
-  .updateUser {
-    border-color: $borderColorCard;
-  }
-  .favMovies {
-    border-color: $borderColorCard;
-  }
-  color: $color;
-}

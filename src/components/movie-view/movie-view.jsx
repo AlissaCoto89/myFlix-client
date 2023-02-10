@@ -58,58 +58,62 @@ export function MovieView({ movie, onBackClick }) {
   }, []);
 
   return (
-    <Card className="movieView">
+    <Card style={{ marginTop: 50, marginBottom: 350 }} bg="dark" text="light">
       <Card.Header className="text-center" as="h5">
         {movie.Title}
       </Card.Header>
       <Card.Body>
         <CardGroup>
-          <Card bg="light" text="dark">
-            <div className="moviePoster">
-              <img width="250" src={movie.ImagePath} />
-            </div>
-            <Card bg="light" border="dark" text="dark">
-              <Card.Body className="movie-textarea">
-                <span className="movie-description">{movie.Description}</span>
-                <div className="directorLink">
-                  <span className="label">Director Information: </span>
+          <Card bg="dark" border="dark" text="light">
+            <Card.Body className="movie-textarea">
+              <div className="movie-genre-link">
+                <span className="label">Genre: </span>
+                <Link to={`/genres/${movie.Genre.Name}`}>
+                  <Button variant="link">{movie.Genre.Name}</Button>
+                </Link>
+                <div className="movie-director-link">
+                  <span className="label">Director: </span>
                   <Link to={`/directors/${movie.Director.Name}`}>
-                    <Button variant="link">Director</Button>
+                    <Button variant="link">{movie.Director.Name}</Button>
                   </Link>
                 </div>
-                <div className="genreLink">
-                  <span className="label">Genre Information: </span>
-                  <Link to={`/genres/${movie.Genre.Name}`}>
-                    <Button variant="link">Genre</Button>
-                  </Link>
-                </div>
-              </Card.Body>
-            </Card>
+              </div>
+              <span className="movie-description">{movie.Description}</span>
+            </Card.Body>
+          </Card>
+          <Card bg="dark" border="dark" text="light">
+            <Card.Img
+              className="movie-poster"
+              as="img"
+              crossOrigin="anonymous | use-credentials"
+              src={movie.ImagePath}
+            />
           </Card>
         </CardGroup>
       </Card.Body>
-      <Card.Footer>
+      <Card.Footer className="text-right">
         <Row className="mx-0">
           {favoriteMovies.includes(movie._id) ? (
             <Button
-              variant="danger"
+              className="removeFavorite"
+              variant="warning"
               onClick={() => removeFavorite(currentUser, movie._id)}
             >
               Remove Movie from Favorites
             </Button>
           ) : (
             <Button
-              variant="success"
+              className="addFavorite"
+              variant="info"
               onClick={() => addFavorite(currentUser, movie._id)}
             >
               Add Movie to Favorites
             </Button>
           )}
-        </Row>
-        <Row className="mx-1">
+
           <Button
-            className="backBtn"
-            variant="info"
+            className="back-button-movie-view"
+            variant="link"
             onClick={() => {
               onBackClick();
             }}

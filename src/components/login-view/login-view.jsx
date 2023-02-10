@@ -1,6 +1,15 @@
 import React, { useState } from "react";
-import { Container, Card, Form, Button } from "react-bootstrap";
+import {
+  Container,
+  Card,
+  Form,
+  Button,
+  CardGroup,
+  Col,
+  Row,
+} from "react-bootstrap";
 import axios from "axios";
+import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import "./login-view.scss";
 
@@ -51,49 +60,55 @@ export function LoginView(props) {
   };
 
   return (
-    <Container className="login-container">
-      <Card className="login-card">
-        <Card.Header className="text-center" as="h5">
-          Login
-        </Card.Header>
-        <Card.Body>
-          <Form>
-            <Form.Group className="login-form-group" controlId="formUsername">
-              <Form.Label>Username:</Form.Label>
-              <Form.Control
-                type="text"
-                placeholder="Enter username"
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
-              />
-              {usernameErr && <p>{usernameErr}</p>}
-            </Form.Group>
-
-            <Form.Group
-              className="form-group-password"
-              controlId="formPassword"
+    <Container style={{ width: 600 }}>
+      <Row>
+        <Col>
+          <CardGroup>
+            <Card
+              style={{ marginTop: 100, marginBottom: 350 }}
+              className="logIn"
             >
-              <Form.Label>Password:</Form.Label>
-              <Form.Control
-                type="password"
-                placeholder="Enter password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-              />
-              {passwordErr && <p>{passwordErr}</p>}
-            </Form.Group>
-
-            <Button
-              className="button-login-view"
-              variant="info"
-              type="submit"
-              onClick={handleSubmit}
-            >
-              Log in
-            </Button>
-          </Form>
-        </Card.Body>
-      </Card>
+              <Card.Body>
+                <Card.Title style={{ textAlign: "center", fontSize: "2rem" }}>
+                  Login
+                </Card.Title>
+                <Form className="login-form">
+                  <Form.Group controlId="formUsername">
+                    <Form.Label>Username:</Form.Label>
+                    <Form.Control
+                      type="text"
+                      value={username}
+                      onChange={(e) => setUsername(e.target.value)}
+                      required
+                      placeholder="Enter a username"
+                    />
+                    {usernameErr && <p>{usernameErr}</p>}
+                  </Form.Group>
+                  <Form.Group controlId="formPassword">
+                    <Form.Label>Password:</Form.Label>
+                    <Form.Control
+                      type="password"
+                      value={password}
+                      onChange={(e) => setPassword(e.target.value)}
+                      required
+                      placeholder="Enter a password"
+                    />
+                    {passwordErr && <p>{passwordErr}</p>}
+                  </Form.Group>
+                  <Form.Group className="mt-2">
+                    <Button variant="info" type="submit" onClick={handleSubmit}>
+                      Submit
+                    </Button>
+                    <Link to="/register" className="ml-2 registerLink">
+                      Register
+                    </Link>
+                  </Form.Group>
+                </Form>
+              </Card.Body>
+            </Card>
+          </CardGroup>
+        </Col>
+      </Row>
     </Container>
   );
 }

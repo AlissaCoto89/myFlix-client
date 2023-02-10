@@ -58,7 +58,7 @@ export function ProfileView({ movies, onUpdatedUser, onBackClick }) {
       {user && (
         <>
           <Button
-            className="backBtn"
+            className="mb-2 px-0 backBtn"
             onClick={() => {
               onBackClick(null);
             }}
@@ -83,18 +83,16 @@ export function ProfileView({ movies, onUpdatedUser, onBackClick }) {
               </Card>
             </Col>
           </Row>
-          <Row>
-            <Col lg={12}>
-              <Card className="mb-3 favMovies">
-                <Card.Body>
-                  <FavoriteMovies
-                    favoriteMovieList={favoriteMovies}
-                    onRemoveFavorite={(movieId) => removeFavorite(movieId)}
-                  />
-                </Card.Body>
-              </Card>
-            </Col>
-          </Row>
+          <Col md={12}>
+            <Card className="favoriteMovies">
+              <Card.Body>
+                <FavoriteMovies
+                  favoriteMovieList={favoriteMovies}
+                  onRemoveFavorite={(movieId) => removeFavorite(movieId)}
+                />
+              </Card.Body>
+            </Card>
+          </Col>
         </>
       )}
     </Container>

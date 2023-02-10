@@ -1,8 +1,47 @@
 @import "../../styles/styles";
 
-.director-view {
-  .backBtn {
-    color: $linkColor;
-  }
-  color: $color;
+
+.movie-director-bio > span.label,
+.headline-director-mini-cards {
+  margin: 25px 0;
+  color: #ffffff;
 }
+
+.movie-director-bio > span.value {
+  color: #ffffff;
+}
+
+.movie-director-birth > span.label,
+.movie-director-death > span.label {
+  font-weight: bold;
+  color: #ffffff;
+  
+}
+
+.movie-director-birth > span.value,
+.movie-director-death > span.value {
+  color: #ffffff;
+  
+}
+
+.card-group-director-mini-cards {
+  margin-top: 20px;
+}
+
+.button-director-view {
+  
+    color: $buttonColor;
+    background-color: $hoverLinkColor;
+    border: #ffffff;
+outline: "none";
+&:active,
+&:focus {
+  color: $linkColor;
+}
+&:hover {
+  color: #ffffff;
+}
+}
+
+
+

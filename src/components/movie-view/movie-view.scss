@@ -1,18 +1,43 @@
 @import "../../styles/styles";
 
+.movie-textarea.card-body {
+  padding: 0 15px 0 0;
+}
+span.movie-description {
+  display: block;
+  padding-bottom: 15px;
+}
+div.movie-genre-description,
+div.movie-actors {
+  display: block;
+  padding-bottom: 15px;
+}
 .label {
   font-weight: bold;
 }
 
-img {
-  width: 300px;
-  height: 450px;
+.director-link {
+  color: $hoverLinkColor;
 }
 
-.movieView {
-  .backLink,
-  .directorLink,
-  .genreLink {
-    color: $color;
-  }
+.back-button-movie-view {
+  color: #ffffff;
+  background-color: $linkColor;
 }
+
+
+.addFavorite {
+  right: 20px;
+  left: 20px;
+  color: #ffffff;
+  background-color: $buttonColor;
+}
+
+
+img {
+  width: 200px;
+  height: 350px;}
+
+ 
+
+

@@ -1,7 +1,14 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { Container, Card, Button, Form } from "react-bootstrap";
-import PropTypes from "prop-types";
+import {
+  Container,
+  Card,
+  CardGroup,
+  Button,
+  Form,
+  Row,
+  Col,
+} from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import "./registration-view.scss";
@@ -16,6 +23,7 @@ export function RegistrationView(props) {
     passwordErr: "",
     emailErr: "",
   });
+
   const validate = () => {
     let isReq = true;
     if (!username) {
@@ -73,67 +81,69 @@ export function RegistrationView(props) {
   };
 
   return (
-    <Container className="registration-container">
-      <Card className="registration-card">
-        <Card.Header className="text-center" as="h5">
-          Registration
-        </Card.Header>
-        <Card.Body>
-          <Form className="registration-form">
-            <Form.Group controlId="formUsername" className="reg-form-inputs">
-              <Form.Label>Username:</Form.Label>
-              <Form.Control
-                type="text"
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
-              />
-              {values.usernameErr && <p>{values.usernameErr}</p>}
-            </Form.Group>
+    <Container style={{ width: 600 }}>
+      <Row>
+        <Col>
+          <CardGroup>
+            <Card style={{ marginTop: 100, marginBottom: 350 }}>
+              <Card.Body>
+                <Card.Title style={{ textAlign: "center", fontSize: "2rem" }}>
+                  Register
+                </Card.Title>
+                <Form className="registration-form">
+                  <Form.Group>
+                    <Form.Label>Username:</Form.Label>
+                    <Form.Control
+                      type="text"
+                      value={username}
+                      onChange={(e) => setUsername(e.target.value)}
+                    />
+                    {values.usernameErr && <p>{values.usernameErr}</p>}
+                  </Form.Group>
 
-            <Form.Group controlId="formPassword" className="reg-form-inputs">
-              <Form.Label>Password:</Form.Label>
-              <Form.Control
-                type="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-              />
-              {values.passwordErr && <p>{values.passwordErr}</p>}
-            </Form.Group>
+                  <Form.Group>
+                    <Form.Label>Password:</Form.Label>
+                    <Form.Control
+                      type="password"
+                      value={password}
+                      onChange={(e) => setPassword(e.target.value)}
+                    />
+                    {values.passwordErr && <p>{values.passwordErr}</p>}
+                  </Form.Group>
 
-            <Form.Group controlId="Email" className="reg-form-inputs">
-              <Form.Label>Email:</Form.Label>
-              <Form.Control
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-              />
-              {values.emailErr && <p>{values.emailErr}</p>}
-            </Form.Group>
+                  <Form.Group>
+                    <Form.Label>Email:</Form.Label>
+                    <Form.Control
+                      type="email"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                    />
+                    {values.emailErr && <p>{values.emailErr}</p>}
+                  </Form.Group>
 
-            <Form.Group controlId="updateBirthday">
-              <Form.Label>Birthday:</Form.Label>
-              <Form.Control
-                type="date"
-                name="birthday"
-                onChange={(e) => setBirthday(e.target.value)}
-              />
-            </Form.Group>
-
-            <Button
-              className="register"
-              variant="info"
-              type="submit"
-              onClick={handleSubmit}
-            >
-              Register
-            </Button>
-            <p></p>
-            <p>
-              Already registered? <Link to={"/"}>Sign In</Link> here
-            </p>
-          </Form>
-        </Card.Body>
-      </Card>
+                  <Form.Group>
+                    <Form.Label>Birthday:</Form.Label>
+                    <Form.Control
+                      type="date"
+                      name="birthday"
+                      onChange={(e) => setBirthday(e.target.value)}
+                    />
+                  </Form.Group>
+                  <Form.Group className="mt-2">
+                    <Button variant="info" type="submit" onClick={handleSubmit}>
+                      Register
+                    </Button>
+                    <p></p>
+                    <p>
+                      Already registered? <Link to={"/"}>Login here</Link>
+                    </p>
+                  </Form.Group>
+                </Form>
+              </Card.Body>
+            </Card>
+          </CardGroup>
+        </Col>
+      </Row>
     </Container>
   );
 }
