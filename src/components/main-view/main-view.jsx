@@ -8,14 +8,9 @@ import {
   deleteFavorite,
 } from "../../actions/actions";
 import MoviesList from "../movies-list/movies-list";
-import {
-  BrowserRouter as Router,
-  Route,
-  Link,
-  Redirect,
-} from "react-router-dom";
+import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
 import { Container, Row, Col, Navbar } from "react-bootstrap";
-import { Navbar } from "../navbar/navbar";
+import Navbar from "../navbar/navbar";
 import LoginView from "../login-view/login-view";
 import MovieView from "../movie-view/movie-view";
 import { RegistrationView } from "../registration-view/registration-view";

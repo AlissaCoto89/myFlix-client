@@ -1,7 +1,6 @@
 import React from "react";
-import { Navbar, Container, Nav, Button } from "react-bootstrap";
+import { Navbar, Container, Nav } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import { connect } from "react-redux";
 import "./navbar.scss";
 
 export default function Navbar({ user }) {
