@@ -1,54 +1,35 @@
-![MyFlixMoviesPage](https://user-images.githubusercontent.com/109038162/202031647-cc8e1f6e-9944-40fb-9e08-eea213582528.png)
-![MyFlixProfilePage](https://user-images.githubusercontent.com/109038162/202031658-0175af80-2ebe-46bd-b0eb-e7981aa7ff8b.png)
-![MyFlixRegistrationPage](https://user-images.githubusercontent.com/109038162/202031665-429242ac-2639-459e-9925-1abb9b7e279c.png)
-![MyFlixLoginPage](https://user-images.githubusercontent.com/109038162/202031673-3903238d-e672-45ae-9f98-d3eb04e91d3d.png)
 # myFlix-client
 
-The client-side for an application myFlix, to display data from the server-side myFlix API (REST API and database).
+## Intro:
+- The client-side for an application called myFlix based on its existing server-side code (REST API and database).
 
-Key features:
+## Key Features:
+  - Main view
+    - Returns a list of ALL movies to the user (each listed item with an image, title, and description)
+    - Sorting and filtering
+    - Ability to select a movie for more details
+  - Single movie view
+    - Returns data (description, genre, director, image) about a single movie to the user
+    - Allows users to add a movie to their list of favorites
+  - Login view
+    - Allows users to log in with a username and password
+    - Registration view
+    - Allows new users to register (username, password, email, birthday)
+  - Genre view
+    - Returns data about a genre, with a name and description
+    - Displays example movies
+  - Director view
+    - Returns data about a director (name, bio, birth year, death year)
+    - Displays example movies
+    
+## Technology Stack:
+JavaScript, React, React Bootstrap,React Redux, Parcel
 
+## Application Link:
+https://my-flix-db-akc.netlify.app
 
--Main View:
-
-Returns a list of ALL movies to the user (each listed item with an image, title, and description)
-
-Allows user to select a movie for more details
-
-
--Movie View:
-
-Returns data (description, genre, director, image) about a single movie to the user 
-
-Allows for users to add or remove a movie on their favorite movie list
-
-
--Login View:
-
-Allows users to log in with a username and password
-
-
--Registration View:
-
-Allows new users to register (username, password, e-mail, and birthday)
-
-
--Profile View:
-
-Allows registered users to update their profile (username, password, e-mail, and birthday)
-
-Allows users to view and edit their favorite movie list
-
-
--Genre View
-
-Returns data about a movies genre, with a name and description
-
-
--Director View
-
-Returns data about a director (name, bio, birth year, death year)
-
-
-
--Technologies used: JavaScript, React, React Bootstrap, React Redux
+![myFlix](https://user-images.githubusercontent.com/109038162/225141264-7e0d6be9-7d08-424f-93f1-b8c48d6f0a5a.png)
+![myFlixLogin](https://user-images.githubusercontent.com/109038162/225141301-29adc0ed-1d23-466f-baf3-bbb3dd0b8e78.png)
+![myFlixMovie](https://user-images.githubusercontent.com/109038162/225141329-4f2fdc61-80cb-49d2-8127-bac9ee5a88b4.png)
+![myFlixProfile](https://user-images.githubusercontent.com/109038162/225141350-876777f2-1d29-4eb6-bde6-00c6a622af2b.png)
+![myFlixReg](https://user-images.githubusercontent.com/109038162/225141366-4b04632e-bf23-4d7c-ada7-a79cf4c95f35.png)
