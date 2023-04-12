@@ -1,5 +1,8 @@
 # myFlix-client
+
+## Intro:
 - The client-side for an application called myFlix based on its existing server-side code (REST API and database).
+
 ## Key Features:
   - Main view
     - Returns a list of ALL movies to the user (each listed item with an image, title, and description)
@@ -18,12 +21,12 @@
   - Director view
     - Returns data about a director (name, bio, birth year, death year)
     - Displays example movies
-- Technologies used: JavaScript, React, React Bootstrap,React Redux, Parcel
+    
+## Technology Stack:
+JavaScript, React, React Bootstrap,React Redux, Parcel
 
 ## Application Link:
 https://my-flix-db-akc.netlify.app
-
-
 
 ![myFlix](https://user-images.githubusercontent.com/109038162/225141264-7e0d6be9-7d08-424f-93f1-b8c48d6f0a5a.png)
 ![myFlixLogin](https://user-images.githubusercontent.com/109038162/225141301-29adc0ed-1d23-466f-baf3-bbb3dd0b8e78.png)
